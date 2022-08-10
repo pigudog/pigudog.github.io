@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>DA2-Explore analytics and visualization | PiguDog的小屋</title><meta name="keywords" content="DA"><meta name="author" content="pigudog,2205638116@qq.com"><meta name="copyright" content="pigudog"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="探索性数据分析（单因子与对比分析）123import pandasdf &#x3D; pd.read_csv(&quot;.&#x2F;data&#x2F;HR.csv&quot;)df.head(10) 接下来，主要以这份数据为主，介绍相关的知识 理论铺垫 集中趋势：均值、中位数与分位数、众数 离中趋势：标准差、方差 数据分布：偏态与峰态、正态分布与三大分布 抽样理论：抽样误差、抽样精度  集中趋势 均值、中位数、众数、分位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DA2-Explore analytics and visualization">
+<meta property="og:url" content="http://example.com/2022/08/08/DA2/index.html">
+<meta property="og:site_name" content="PiguDog的小屋">
+<meta property="og:description" content="探索性数据分析（单因子与对比分析）123import pandasdf &#x3D; pd.read_csv(&quot;.&#x2F;data&#x2F;HR.csv&quot;)df.head(10) 接下来，主要以这份数据为主，介绍相关的知识 理论铺垫 集中趋势：均值、中位数与分位数、众数 离中趋势：标准差、方差 数据分布：偏态与峰态、正态分布与三大分布 抽样理论：抽样误差、抽样精度  集中趋势 均值、中位数、众数、分位">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html">
+<meta property="article:published_time" content="2022-08-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-10T15:11:21.874Z">
+<meta property="article:author" content="pigudog">
+<meta property="article:tag" content="DA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/08/08/DA2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: pigudog","link":"Link: ","source":"Source: PiguDog的小屋","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DA2-Explore analytics and visualization',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-10 23:11:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">PiguDog的小屋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DA2-Explore analytics and visualization<a class="post-edit-link" href="https://github.com/pigudog/_posts/DA2.md" title="Edited on" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-08-07T16:00:00.000Z" title="Created 2022-08-08 00:00:00">2022-08-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-08-10T15:11:21.874Z" title="Updated 2022-08-10 23:11:21">2022-08-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/computer/">computer</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/computer/DA/">DA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DA2-Explore analytics and visualization"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="探索性数据分析（单因子与对比分析）"><a href="#探索性数据分析（单因子与对比分析）" class="headerlink" title="探索性数据分析（单因子与对比分析）"></a>探索性数据分析（单因子与对比分析）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas</span><br><span class="line">df = pd.read_csv(&quot;./data/HR.csv&quot;)</span><br><span class="line">df.head(10)</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220807191317.png"><br><img src="/2022/08/08/DA2/Pasted%20image%2020220807191455.png"><br>接下来，主要以这份数据为主，介绍相关的知识</p>
+<h2 id="理论铺垫"><a href="#理论铺垫" class="headerlink" title="理论铺垫"></a>理论铺垫</h2><ul>
+<li>集中趋势：均值、中位数与分位数、众数</li>
+<li>离中趋势：标准差、方差</li>
+<li>数据分布：偏态与峰态、正态分布与三大分布</li>
+<li>抽样理论：抽样误差、抽样精度</li>
+</ul>
+<h4 id="集中趋势"><a href="#集中趋势" class="headerlink" title="集中趋势"></a>集中趋势</h4><ul>
+<li>均值、中位数、众数、分位数</li>
+<li>四分位数$(n+1)\times 0.25$</li>
+<li>众数是一组数据中出现次数最多的那个数，一组数据可以有多个众数,也可以没有众数</li>
+</ul>
+<h4 id="离中趋势"><a href="#离中趋势" class="headerlink" title="离中趋势"></a>离中趋势</h4><ul>
+<li>标准差和方差</li>
+<li>标准差的平方就是方差</li>
+</ul>
+<h4 id="数据分布"><a href="#数据分布" class="headerlink" title="数据分布"></a>数据分布</h4><ul>
+<li>偏态系数和峰态系数<ul>
+<li><img src="/2022/08/08/DA2/Pasted%20image%2020220807192838.png"></li>
+</ul>
+</li>
+<li>正态分布与三大分布-其应用将在后续进行介绍</li>
+</ul>
+<h4 id="抽样理论"><a href="#抽样理论" class="headerlink" title="抽样理论"></a>抽样理论</h4><ul>
+<li>抽样误差与精度<ul>
+<li><img src="/2022/08/08/DA2/Pasted%20image%2020220807193242.png"></li>
+<li><img src="/2022/08/08/DA2/Pasted%20image%2020220807193515.png"></li>
+<li>所以是1.86到2.14公斤之内</li>
+<li><img src="/2022/08/08/DA2/Pasted%20image%2020220807193838.png"></li>
+<li>此处的$Z_{\alpha}$为2</li>
+<li>这儿的抽样理论是我不太了解的地方，应当进一步学习</li>
+</ul>
+</li>
+</ul>
+<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(&quot;./data/HR.csv&quot;)</span><br><span class="line"></span><br><span class="line">type(&quot;df&quot;)</span><br><span class="line"># pandas.core.frame.DataFrame</span><br><span class="line"></span><br><span class="line">type(df[&quot;satisfaction_level&quot;])</span><br><span class="line"># pandas.core.series.Series</span><br><span class="line"></span><br><span class="line">df.mean()</span><br><span class="line">df.median()</span><br><span class="line">df.quantile(q=0.25)</span><br><span class="line">df.mode() # 这个特殊一些，series的众数返回的也是series</span><br><span class="line"># 返回的是一个series，但是series的mean则为一个值</span><br><span class="line"># dataframe和series的用法基本一致</span><br></pre></td></tr></table></figure>
+
+<p>其他的一些用法介绍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.std() # 标准差</span><br><span class="line">df.var() # 方差</span><br><span class="line">df.sum() # 离散的string求和得到的是类似于连在了一起</span><br></pre></td></tr></table></figure>
+
+<p>偏态系数和峰态系数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.[&quot;satisfaction_level&quot;].skew() # 偏态系数</span><br><span class="line"># -0.47,意味着mean&lt;median&lt;mode，也就是说大部分的值是大于它的平均值的</span><br></pre></td></tr></table></figure>
+<p>左偏分布又称负偏态，右偏分布又称正偏态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.[&quot;satisfaction_level&quot;].kurt()</span><br><span class="line"># 正态分布的峰度系数为3，而此处是以正态分布为0作为标准的</span><br></pre></td></tr></table></figure>
+<p>其中，负数则为比较平缓一些，举个例子-1，0,1，kurt&#x3D;3&#x2F;2<br>但是-2,0,2，kurt&#x3D;1.5<br>-1,0,0,1，kurt&#x3D;2,所以当峰态系数越大，越陡</p>
+<p>生成正态分布</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import scipy.stats as ss</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220807211436.png"><br>其中，mvsk分别代表mean,var,coeefivcient og skew,kurtosis eoefficient<br>ppf和pdf是不同的，pdf得到的是0出的值，ppf是累计概率下的值<br>cdf表示累积到响应概率下的值</p>
+<ul>
+<li>PDF:probability density(distribution) function</li>
+<li>PMF:probality Mass fuction</li>
+<li>CDF:Cummulative distribution function<br><img src="/2022/08/08/DA2/Pasted%20image%2020220807231317.png"></li>
+</ul>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220807232243.png"></p>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220807232914.png"></p>
+<p>当然我们可以对df进行抽样:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.sample(n=10)</span><br><span class="line">df.sample(frac=0.1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据分类"><a href="#数据分类" class="headerlink" title="数据分类"></a>数据分类</h2><p>定类（类别）：根据事物离散，无差别属性进行的分类<br>定序（顺序）：可以界定数据的大小，但是不能测定插值<br>定距（间隔）：可以界定数据大小的同时，可以测定差值，但是无绝对零点<br>定比（比率）：可以界定数据大小，可以测定差值，有绝对零点</p>
+<h2 id="单属性分析"><a href="#单属性分析" class="headerlink" title="单属性分析"></a>单属性分析</h2><p>异常值分析：离散异常值，连续异常值，常识异常值<br>对比分析：绝对数与相对数，时间、空间、理论维度比较<br>结构分析：各组成本分的分布与规律<br>分布分析：数据分布频率的显式分析</p>
+<h4 id="异常值分析"><a href="#异常值分析" class="headerlink" title="异常值分析"></a>异常值分析</h4><p><img src="/2022/08/08/DA2/Pasted%20image%2020220808000810.png"></p>
+<h4 id="对比分析"><a href="#对比分析" class="headerlink" title="对比分析"></a>对比分析</h4><p>比什么和跟谁比</p>
+<ul>
+<li>绝对数比较</li>
+<li>相对数比较<ul>
+<li>结构</li>
+<li>比例</li>
+<li>比较</li>
+<li>动态</li>
+<li>强度</li>
+</ul>
+</li>
+</ul>
+<p>怎么比</p>
+<ul>
+<li>时间-未来走势-环比，同比</li>
+<li>空间</li>
+<li>经验与计划</li>
+</ul>
+<blockquote>
+<p>注重注意各类方法的整理与回顾</p>
+</blockquote>
+<h4 id="结构分析"><a href="#结构分析" class="headerlink" title="结构分析"></a>结构分析</h4><ul>
+<li>部分与总体</li>
+<li>静态与动态</li>
+</ul>
+<h4 id="分布分析"><a href="#分布分析" class="headerlink" title="分布分析"></a>分布分析</h4><ul>
+<li>直接获得的概率分布</li>
+<li>是不是正态分布-假设检验-偏态和峰态</li>
+<li>极大似然-相似的样子-相似程度的衡量</li>
+</ul>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><p>基于python3，接下来的代码演示都是基于python3的操作<br><img src="/2022/08/08/DA2/Pasted%20image%2020220808150232.png"></p>
+<h4 id="stisfaction-level"><a href="#stisfaction-level" class="headerlink" title="stisfaction_level"></a>stisfaction_level</h4><p>首先我们发现这个是0到1之间的数<br>所以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sl_s = df[<span class="string">&quot;satisfaction_level&quot;</span>]</span><br><span class="line">sl_s.isnull() <span class="comment">##它可以用来判断缺失值，但是有时候并不明显</span></span><br><span class="line">sl_s[sl_s.isnull()] <span class="comment">## 因为isnull返回一个逻辑值</span></span><br></pre></td></tr></table></figure>
+<p>对于异常值我们可以将其丢弃掉</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sl_s=sl_s.dropna()</span><br></pre></td></tr></table></figure>
+<p>这样之后我们就可以查看这个series的各种信息了<br><img src="/2022/08/08/DA2/Pasted%20image%2020220808151038.png"><br><img src="/2022/08/08/DA2/Pasted%20image%2020220808151249.png"></p>
+<h4 id="last-evaluation"><a href="#last-evaluation" class="headerlink" title="last_evaluation"></a>last_evaluation</h4><p><img src="/2022/08/08/DA2/Pasted%20image%2020220808151501.png"><br>我们可以很明显地发现这个数据是畸形的，证明可能存在一些完全有问题的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">le_s[le_s&gt;<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 15000 99999,这个数据是有问题的，我们需要抛弃掉</span></span><br><span class="line">le_s = le_s[le_s&lt;<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>为了更好的理解上下分界，以及连续数的异常值，处理如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">le_s = df[<span class="string">&quot;last_evalution&quot;</span>]</span><br><span class="line">q_low = le_s.quantile(q=<span class="number">0.25</span>)</span><br><span class="line">q_high = le_s.quantile(q=<span class="number">0.75</span>)</span><br><span class="line">q_interval = q_high-q_low</span><br><span class="line">k=<span class="number">1.5</span></span><br><span class="line">le_s = le_s[le_s&lt;q_high+k*q_interval][le_s&gt;q_low-k*q_interval]</span><br><span class="line"><span class="built_in">len</span>(le_s)</span><br><span class="line">np.histgram(le_s.values,bins=np.arange(<span class="number">0.0</span>,<span class="number">1.1</span>,<span class="number">0.1</span>))</span><br><span class="line"><span class="comment">## 去除异常值</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="number-project"><a href="#number-project" class="headerlink" title="number_project"></a>number_project</h4><p>总结一下操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">np_s = df[<span class="string">&quot;number_project&quot;</span>]</span><br><span class="line">np_s = df[np.isnull()]</span><br><span class="line">np_s.mean()</span><br><span class="line">np_s.median()</span><br><span class="line">np_s.std()</span><br><span class="line">np_s.skew()</span><br><span class="line">np_s.kurt()</span><br><span class="line">np_s.<span class="built_in">max</span>()</span><br><span class="line">np_s.<span class="built_in">min</span>()</span><br><span class="line"><span class="comment"># 总共9步</span></span><br></pre></td></tr></table></figure>
+<p>除了这些操作之外，我们注意到dtype&#x3D;int64<br>所以我们可以计算每个整数出现的次数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">np_s.value_counts()</span><br><span class="line"><span class="comment">## 但有时候我们不关心次数只在意构成和比例</span></span><br><span class="line">np_s,value_counts(normalize = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220808152935.png"></p>
+<p>我们排一下序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np_s.value_counts(normalize=Ture).sort_index()</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220808153202.png"></p>
+<h4 id="averge-montly-hours"><a href="#averge-montly-hours" class="headerlink" title="averge_montly_hours"></a>averge_montly_hours</h4><p>首先9步走，之后我们去除异常值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 去除异常值</span></span><br><span class="line"><span class="comment"># 去除null值</span></span><br><span class="line"><span class="comment"># 查看 histogram</span></span><br><span class="line">np.histogram(amh_s.values,bins=<span class="number">10</span>)</span><br><span class="line">np.histogram(amh_s.values,bins=(amh_s.<span class="built_in">min</span>(),amh_s.<span class="built_in">max</span>()+<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>下面介绍一个清楚异常值的方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s_s.where(s_s==&quot;nme&quot;)#当符合条件的时候是原来的值，当不符合的时候就是NAN</span><br><span class="line">s_s.where(s_s!=&quot;nme&quot;)</span><br><span class="line">## 所以为了去掉异常值</span><br><span class="line">s_s.where(s_s!=&quot;nme&quot;).dropna()</span><br></pre></td></tr></table></figure>
+
+<h2 id="对比分析-1"><a href="#对比分析-1" class="headerlink" title="对比分析"></a>对比分析</h2><p>先处理一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna(axis=<span class="number">0</span>,how=<span class="string">&quot;any&quot;</span>)<span class="comment">## 有nan删除行数据</span></span><br><span class="line">df = df[df[<span class="string">&quot;xx&quot;</span>]&lt;=<span class="number">1</span>][df[<span class="string">&quot;xx&quot;</span>]!=<span class="string">&quot;xxx&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>简单的对比分析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&quot;department&quot;</span>).mean()</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220808160238.png"></p>
+<p>我们进行切片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.loc[:,[<span class="string">&quot;last_evalution&quot;</span>,<span class="string">&quot;department&quot;</span>]].groupby(<span class="string">&quot;department&quot;</span>).mean()</span><br><span class="line"><span class="comment">## 这样就可以得到这个属性的结构了</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/08/DA2/Pasted%20image%2020220808160744.png"></p>
+<p>当然我们也可以自定义函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[:,[<span class="string">&quot;averge_mounthly_hours&quot;</span>,<span class="string">&quot;department&quot;</span>]].groupby(<span class="string">&quot;department&quot;</span>)[<span class="string">&quot;average_mounthly_hours&quot;</span>].apply(<span class="keyword">lambda</span> x:x.<span class="built_in">max</span>()-x.<span class="built_in">min</span>() )</span><br></pre></td></tr></table></figure>
+
+<h1 id="可视化分析"><a href="#可视化分析" class="headerlink" title="可视化分析"></a>可视化分析</h1><p>pyhton的可视化工具主要有: matplotlib,seaborn,plotly<br>首先我们从kaggle网站中读取文件<a target="_blank" rel="noopener" href="https://www.kaggle.com/code/jacksonchou/hr-analytics/data">https://www.kaggle.com/code/jacksonchou/hr-analytics/data</a></p>
+<h2 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h2><p>你可以在<a target="_blank" rel="noopener" href="https://github.com/pigudog/DA/blob/main/test2.ipynb">https://github.com/pigudog/DA/blob/main/test2.ipynb</a><br>查看这次尝试</p>
+<h2 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h2><p>直方图和前面的柱状图是不一样的，当然他们的形状是差不多的<br><a target="_blank" rel="noopener" href="https://github.com/pigudog/DA/blob/main/test3.ipynb">https://github.com/pigudog/DA/blob/main/test3.ipynb</a></p>
+<h2 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h2><p>箱线图（Box plot）也称为Box_whisker Plot,可以用来反应一组或者多组连续型定量数据分布的中心位置和散布范围<br><img src="/2022/08/08/DA2/iuegdp9r.bmp"><br>在箱线图中，箱子的中间有一条线，代表了数据的中位数，而箱子的上下底，分别是数据的上四分位数Q3和下四分位数Q1，这意味着箱体包含了50%，因此箱子的高度在一定程度上反映了波动程度。上下边缘则代表了改组数据的最大值和最小值。</p>
+<h2 id="折线图，饼图"><a href="#折线图，饼图" class="headerlink" title="折线图，饼图"></a>折线图，饼图</h2><p><a target="_blank" rel="noopener" href="https://github.com/pigudog/DA/blob/main/test4.ipynb">https://github.com/pigudog/DA/blob/main/test4.ipynb</a></p>
+<h1 id="探索性数据分析（多因子分析和复合分析）"><a href="#探索性数据分析（多因子分析和复合分析）" class="headerlink" title="探索性数据分析（多因子分析和复合分析）"></a>探索性数据分析（多因子分析和复合分析）</h1><p>属性与属性之间的联系</p>
+<h2 id="理论铺垫-1"><a href="#理论铺垫-1" class="headerlink" title="理论铺垫"></a>理论铺垫</h2><ul>
+<li>假设检验与方差分析</li>
+<li>相关系数：皮尔逊、斯皮尔曼</li>
+<li>回归：线性回归</li>
+<li>PCA和奇异值分解</li>
+</ul>
+<h4 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h4><p>hypothesis testing，又称为统计假设检验，是用来判断样本与样本、样本与总体的差异是由抽样误差引起的还是本质差异造成的统计推断方法。<strong>显著性检验</strong>是假设检验中最常用的一种方法，也是一种最基本的统计推断形式，其基本原理是先对总体的特征做出某种假设，然后通过抽样研究的统计推理，对此假设应该被拒绝还是接受做出判断。常用的假设检验方法有Z检验，t检验，卡方检验，F检验等</p>
+<ul>
+<li>建立原假设$H_0$(包含等号)，$H_0$的反命题为$H_1$，也叫备择假设</li>
+<li>选择检验统计量</li>
+<li>根据显著水平（一般是0.05），确定拒绝域</li>
+<li>计算p值或者样本统计值，做出判断<br>举一个例子就会更方便理解：<br><img src="/2022/08/08/DA2/Pasted%20image%2020220809163243.png"><br>由此判断，这台机器是否符合要求</li>
+<li>$H_0$：样本是符合均值500g，标准差2g的正态分布</li>
+<li>假设检验量<img src="/2022/08/08/DA2/Pasted%20image%2020220809163526.png"></li>
+<li>显著性水平0.05，于是我们就能得到接受域，也就是$\pm 1.96\sigma$</li>
+<li>计算检验统计量，计算p值2.23，拒绝（p值0.026&lt;0.05）<br><strong>T检验</strong>，比较两者分布情况，常用于医疗<br><strong>F检验</strong>，常用于方差分析</li>
+</ul>
+<h2 id="卡方检验"><a href="#卡方检验" class="headerlink" title="卡方检验"></a>卡方检验</h2><p>我们想检验一下化妆这个行为和性别有没有关系<br><img src="/2022/08/08/DA2/Pasted%20image%2020220809164505.png"><br><img src="/2022/08/08/DA2/Pasted%20image%2020220809164810.png"><br>可以推断出，性别和化妆不化妆是有较强的关系的<br>常用于两个事物之间有没有比较强的联系</p>
+<h2 id="方差检验-F检验"><a href="#方差检验-F检验" class="headerlink" title="方差检验-F检验"></a>方差检验-F检验</h2><p><img src="/2022/08/08/DA2/Pasted%20image%2020220809165012.png"><br>现在有三种电池，我们想检验一下三种电池的寿命是否有区别<br><img src="/2022/08/08/DA2/Pasted%20image%2020220809165145.png"><br><img src="/2022/08/08/DA2/Pasted%20image%2020220809165645.png"><br><img src="/2022/08/08/DA2/Pasted%20image%2020220809165755.png"></p>
+<h2 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h2><ul>
+<li>pearson相关系数<br><img src="/2022/08/08/DA2/Pasted%20image%2020220809170359.png"></li>
+<li>Spearman相关系数<br><img src="/2022/08/08/DA2/Pasted%20image%2020220809170755.png"></li>
+</ul>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><ul>
+<li>回归：确定两种或两种以上变量之间相互依赖的定量关系的一种统计分析方法</li>
+<li>线性回归最常见的解法就是最小二乘法<br><img src="/2022/08/08/DA2/Pasted%20image%2020220809171142.png"><br><img src="/2022/08/08/DA2/Pasted%20image%2020220809171258.png"></li>
+</ul>
+<h2 id="主成分分析PCA"><a href="#主成分分析PCA" class="headerlink" title="主成分分析PCA"></a>主成分分析PCA</h2><p><img src="/2022/08/08/DA2/Pasted%20image%2020220809171712.png"></p>
+<h2 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h2><p><img src="/2022/08/08/DA2/Pasted%20image%2020220809171838.png"><br>涉及到推导的知识较深，可自行学习</p>
+<h2 id="独立分布t检验"><a href="#独立分布t检验" class="headerlink" title="独立分布t检验"></a>独立分布t检验</h2><p><img src="/2022/08/08/DA2/Pasted%20image%2020220809174109.png"></p>
+<h2 id="代码实操"><a href="#代码实操" class="headerlink" title="代码实操"></a>代码实操</h2><p><a target="_blank" rel="noopener" href="https://github.com/pigudog/DA/blob/main/test5.ipynb">https://github.com/pigudog/DA/blob/main/test5.ipynb</a></p>
+<h1 id="复合分析"><a href="#复合分析" class="headerlink" title="复合分析"></a>复合分析</h1><ul>
+<li>交叉分析</li>
+<li>因子分析</li>
+<li>分组与钻取</li>
+<li>相关分析</li>
+<li>聚类分析</li>
+<li>回归分析</li>
+</ul>
+<h2 id="交叉分析"><a href="#交叉分析" class="headerlink" title="交叉分析"></a>交叉分析</h2><p>对于一个表，有行和列两个角度<br>但是这样可能会忽略一些信息的相关性</p>
+<ul>
+<li>两个属性的假设检验</li>
+<li>几个属性分布观察<br><a target="_blank" rel="noopener" href="https://github.com/pigudog/DA/blob/main/test6.ipynb">https://github.com/pigudog/DA/blob/main/test6.ipynb</a></li>
+</ul>
+<h2 id="分组与钻取"><a href="#分组与钻取" class="headerlink" title="分组与钻取"></a>分组与钻取</h2><p>分类与聚类<br>我们这儿只讲最简单的分组分析</p>
+<ul>
+<li>钻取就是改变数据维度的层次，变换分析的粒度</li>
+<li>向上钻取和向下钻取</li>
+<li>连续分组<img src="/2022/08/08/DA2/Pasted%20image%2020220810170505.png"></li>
+<li><img src="/2022/08/08/DA2/Pasted%20image%2020220810170613.png"></li>
+<li><img src="/2022/08/08/DA2/Pasted%20image%2020220810170704.png"><br><a target="_blank" rel="noopener" href="https://github.com/pigudog/DA/blob/main/test7.ipynb">https://github.com/pigudog/DA/blob/main/test7.ipynb</a></li>
+</ul>
+<h2 id="相关分析"><a href="#相关分析" class="headerlink" title="相关分析"></a>相关分析</h2><p>作为初步了解，知道如何计算相关系数就可以了<br><img src="/2022/08/08/DA2/Pasted%20image%2020220810201954.png"><br><img src="/2022/08/08/DA2/Pasted%20image%2020220810202239.png"><br><a target="_blank" rel="noopener" href="https://github.com/pigudog/DA/blob/main/test8.ipynb">https://github.com/pigudog/DA/blob/main/test8.ipynb</a></p>
+<h2 id="因子分析（成分分析）"><a href="#因子分析（成分分析）" class="headerlink" title="因子分析（成分分析）"></a>因子分析（成分分析）</h2><ul>
+<li>探索性因子分析<ul>
+<li>主成分分析</li>
+</ul>
+</li>
+<li>验证性因子分析<ul>
+<li>假设检验</li>
+<li>相关分析<br><img src="/2022/08/08/DA2/Pasted%20image%2020220810231046.png"></li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">pigudog</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/08/08/DA2/">http://example.com/2022/08/08/DA2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DA/">DA</a></div><div class="post_share"><div class="social-share" data-image="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/08/08/vscode%E6%8E%A8%E9%80%81github/"><img class="next-cover" src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">vscode+github同步</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/08/01/DA0/" title="Intro to DA"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-01</div><div class="title">Intro to DA</div></div></a></div><div><a href="/2022/08/07/DA1/" title="DA1-Data Acquisition"><img class="cover" src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-07</div><div class="title">DA1-Data Acquisition</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">pigudog</div><div class="author-info__description">冲冲冲！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/pigudog"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pigudog" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2205638116@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E6%80%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%88%E5%8D%95%E5%9B%A0%E5%AD%90%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">探索性数据分析（单因子与对比分析）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E9%93%BA%E5%9E%AB"><span class="toc-number">1.1.</span> <span class="toc-text">理论铺垫</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E4%B8%AD%E8%B6%8B%E5%8A%BF"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">集中趋势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E4%B8%AD%E8%B6%8B%E5%8A%BF"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">离中趋势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">数据分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E6%A0%B7%E7%90%86%E8%AE%BA"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">抽样理论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.1.0.5.</span> <span class="toc-text">实践</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">数据分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%B1%9E%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">单属性分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%80%BC%E5%88%86%E6%9E%90"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">异常值分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">对比分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">结构分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%88%86%E6%9E%90"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">分布分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#stisfaction-level"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">stisfaction_level</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#last-evaluation"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">last_evaluation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#number-project"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">number_project</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#averge-montly-hours"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">averge_montly_hours</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90-1"><span class="toc-number">1.5.</span> <span class="toc-text">对比分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">可视化分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">柱状图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">2.2.</span> <span class="toc-text">直方图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%B1%E7%BA%BF%E5%9B%BE"><span class="toc-number">2.3.</span> <span class="toc-text">箱线图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E7%BA%BF%E5%9B%BE%EF%BC%8C%E9%A5%BC%E5%9B%BE"><span class="toc-number">2.4.</span> <span class="toc-text">折线图，饼图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E6%80%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%88%E5%A4%9A%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90%E5%92%8C%E5%A4%8D%E5%90%88%E5%88%86%E6%9E%90%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">探索性数据分析（多因子分析和复合分析）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E9%93%BA%E5%9E%AB-1"><span class="toc-number">3.1.</span> <span class="toc-text">理论铺垫</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.1.0.1.</span> <span class="toc-text">假设检验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%A1%E6%96%B9%E6%A3%80%E9%AA%8C"><span class="toc-number">3.2.</span> <span class="toc-text">卡方检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE%E6%A3%80%E9%AA%8C-F%E6%A3%80%E9%AA%8C"><span class="toc-number">3.3.</span> <span class="toc-text">方差检验-F检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">相关系数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">3.5.</span> <span class="toc-text">线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90PCA"><span class="toc-number">3.6.</span> <span class="toc-text">主成分分析PCA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3"><span class="toc-number">3.7.</span> <span class="toc-text">奇异值分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E5%88%86%E5%B8%83t%E6%A3%80%E9%AA%8C"><span class="toc-number">3.8.</span> <span class="toc-text">独立分布t检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%93%8D"><span class="toc-number">3.9.</span> <span class="toc-text">代码实操</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">复合分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E5%88%86%E6%9E%90"><span class="toc-number">4.1.</span> <span class="toc-text">交叉分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E4%B8%8E%E9%92%BB%E5%8F%96"><span class="toc-number">4.2.</span> <span class="toc-text">分组与钻取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90"><span class="toc-number">4.3.</span> <span class="toc-text">相关分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90%EF%BC%88%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">因子分析（成分分析）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/08/DA2/" title="DA2-Explore analytics and visualization"><img src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DA2-Explore analytics and visualization"/></a><div class="content"><a class="title" href="/2022/08/08/DA2/" title="DA2-Explore analytics and visualization">DA2-Explore analytics and visualization</a><time datetime="2022-08-07T16:00:00.000Z" title="Created 2022-08-08 00:00:00">2022-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/08/vscode%E6%8E%A8%E9%80%81github/" title="vscode+github同步"><img src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vscode+github同步"/></a><div class="content"><a class="title" href="/2022/08/08/vscode%E6%8E%A8%E9%80%81github/" title="vscode+github同步">vscode+github同步</a><time datetime="2022-08-07T16:00:00.000Z" title="Created 2022-08-08 00:00:00">2022-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/07/DA1/" title="DA1-Data Acquisition"><img src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DA1-Data Acquisition"/></a><div class="content"><a class="title" href="/2022/08/07/DA1/" title="DA1-Data Acquisition">DA1-Data Acquisition</a><time datetime="2022-08-06T16:00:00.000Z" title="Created 2022-08-07 00:00:00">2022-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/03/sjuC/" title="2021数模C题笔记"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021数模C题笔记"/></a><div class="content"><a class="title" href="/2022/08/03/sjuC/" title="2021数模C题笔记">2021数模C题笔记</a><time datetime="2022-08-02T16:00:00.000Z" title="Created 2022-08-03 00:00:00">2022-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/hello-world/" title="Hello World"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/08/02/hello-world/" title="Hello World">Hello World</a><time datetime="2022-08-02T07:39:23.261Z" title="Created 2022-08-02 15:39:23">2022-08-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By pigudog</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://pigudog.com">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
