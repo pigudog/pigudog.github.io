@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux-实操篇-3.1 常用基本shell命令 | PiguDog的小屋</title><meta name="keywords" content="Linux"><meta name="author" content="pigudog,2205638116@qq.com"><meta name="copyright" content="pigudog"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Shell可以看做是一个命令解释器，为我们提供交互式的文本控制台界面。我们可以通过终端控制台来输入命令，由shell进行解释并最终交给内核执行。本章将分类介绍常用的基本shell命令 Linux是源于unix，unix的解释执行的是Bourrl shell,然后Linux的使用的是Bourrl again shell -&gt; bash Ubantu为了简化就是用dash，因为是从Debian来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-实操篇-3.1 常用基本shell命令">
+<meta property="og:url" content="http://example.com/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="PiguDog的小屋">
+<meta property="og:description" content="Shell可以看做是一个命令解释器，为我们提供交互式的文本控制台界面。我们可以通过终端控制台来输入命令，由shell进行解释并最终交给内核执行。本章将分类介绍常用的基本shell命令 Linux是源于unix，unix的解释执行的是Bourrl shell,然后Linux的使用的是Bourrl again shell -&gt; bash Ubantu为了简化就是用dash，因为是从Debian来">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2022-11-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-11T12:24:42.015Z">
+<meta property="article:author" content="pigudog">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: pigudog","link":"Link: ","source":"Source: PiguDog的小屋","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux-实操篇-3.1 常用基本shell命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-11 20:24:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">82</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">PiguDog的小屋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux-实操篇-3.1 常用基本shell命令<a class="post-edit-link" href="https://github.com/pigudog/_posts/Linux系统入门/第三章 实操篇/3.1 常用基本shell命令.md" title="Edited on" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-11-09T16:00:00.000Z" title="Created 2022-11-10 00:00:00">2022-11-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-11-11T12:24:42.015Z" title="Updated 2022-11-11 20:24:42">2022-11-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/computer/">computer</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/computer/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux-实操篇-3.1 常用基本shell命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Shell可以看做是一个命令解释器，为我们提供交互式的文本控制台界面。我们可以通过终端控制台来输入命令，由shell进行解释并最终交给内核执行。本章将分类介绍常用的基本shell命令</p>
+<p>Linux是源于unix，unix的解释执行的是Bourrl shell,然后Linux的使用的是Bourrl again shell -&gt; bash</p>
+<p>Ubantu为了简化就是用dash，因为是从Debian来的</p>
+<p>但是我们使用的是bash<img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013171018.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013171139.png"></p>
+<h1 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h1><p>提供了非常方便的命令手册，man-&gt; manual<br>man + 命令名称</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man ls</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013171647.png"></p>
+<p>一个疑惑-&gt;man cd 会进入bash的解释，cd是shell的内置命令，就是所谓的</p>
+<ul>
+<li>built-in 命令，一部分基础功能的系统命令是直接内嵌在shell中的，常驻系统内存中<ul>
+<li>cd</li>
+<li>exit</li>
+<li>但是我们可以使用help命令， 获得shell内置命令的帮助信息help cd,注意没法help+外部命令</li>
+</ul>
+</li>
+<li>外部命令</li>
+</ul>
+<p>那么怎么判断命令的类型呢?</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type ls</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013172606.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013172735.png"><br>p–posix,ieee定义的标准命令<br>我们可以输入 cd 1p cd查看</p>
+<p><strong>快捷键</strong><br>ctrl+l &#x3D; clear<br>reset&#x3D;把整个bash直接初始化<br>善于使用tab键</p>
+<h1 id="目录操作命令"><a href="#目录操作命令" class="headerlink" title="目录操作命令"></a>目录操作命令</h1><h2 id="pwd："><a href="#pwd：" class="headerlink" title="pwd："></a><strong>pwd</strong>：</h2><p>print working directory 打印工作目录</p>
+<ul>
+<li>基本与语法：pwd  显示当前工作目录的绝对路径</li>
+</ul>
+<p>相对路径的一些操作<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013175416.png"><br>其中..表示返回路径的上一个目录<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013175655.png"></p>
+<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a><strong>cd</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br></pre></td></tr></table></figure>
+<p>回到主目录，root回到root，pigudogzyy回到&#x2F;home&#x2F;pigudog</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd -</span><br></pre></td></tr></table></figure>
+<p>在之前的几个目录中跳转</p>
+<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a><strong>ls</strong></h2><ul>
+<li>list 列出目录内容</li>
+<li>ls | 选项 | 目录或是文件 |</li>
+<li>ls -l长格式</li>
+<li>ls -a</li>
+</ul>
+<h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir:"></a><strong>mkdir:</strong></h2><p>创建目录<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013183716.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013183753.png"></p>
+<p>但是一个个往里创建太麻烦，我们要使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p g/h/i</span><br><span class="line"># p指parent，有就是说如果没有父目录则自动创建</span><br></pre></td></tr></table></figure>
+
+<h2 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a><strong>rmdir</strong></h2><ul>
+<li>移除一个目录</li>
+<li>主义如果子目录非空，则无法删除</li>
+<li><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013184119.png"></li>
+<li>用-p当父目录为空的时候，将父目录也删除掉</li>
+</ul>
+<h1 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h1><h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a><strong>touch</strong></h2><ul>
+<li>touch + 文件名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch hello</span><br></pre></td></tr></table></figure>
+<img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013184526.png"><br>不带文件属性默认为文本文件</li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013184713.png"></p>
+<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a><strong>cp</strong></h2><p>copy</p>
+<ul>
+<li>cp + option + source + dcst(destination)<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013185036.png"><br>如果我们的dcst是一个文件的话，我们需要确认是否覆盖</li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013185205.png"></p>
+<ul>
+<li>覆盖之后会写入到我们制定的文件中</li>
+</ul>
+<p>Linux中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\cp</span><br><span class="line"># 这个操作将没有任何提示，直接覆盖文件</span><br></pre></td></tr></table></figure>
+<p>这个就涉及到原生命令，<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013185446.png"><br>我们可以看到-i 的意思是interactive就是交互式的意思<br>如果我们加上反斜杠，就是直接使用cp</p>
+<p>我们可以直接去查看别名alias<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013185707.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r</span><br><span class="line"># 递归地复制整个文件夹</span><br></pre></td></tr></table></figure>
+<p>r: recursive<br>也就是说如果我们复制某一个目录，但是在该目录下面有其他的子目录，会全部都被复制过去</p>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><ul>
+<li>删除文件或目录</li>
+<li>rm [option] deleteFile 递归删除目录中所有内容,但是如果不加-r是删除文件，不能删除目录</li>
+<li>-r 递归删除目录中所有内容</li>
+<li>-f 强制执行删除操作，而不提示用于进行确定force</li>
+<li>-v 显示指令的详细指向过程</li>
+<li>-rf非常强大一下子全删干净了，删库跑路<ul>
+<li><code>rm -rf /</code>神奇的指令</li>
+<li><code>rm -f ./</code>一个点表示当前目录</li>
+</ul>
+</li>
+</ul>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>移动文件与目录或重命名<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013191303.png"><br>如果后边给的是文件名，则移动过去之后还会重命名</p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>catch，捕捉当前文件的所有内容</p>
+<ul>
+<li>查看文件内容，从第一行开始显示</li>
+<li>cat [option] 要查看的文件</li>
+</ul>
+<p>-n</p>
+<ul>
+<li>显示所有行的行号，包括空行</li>
+</ul>
+<h2 id="more"><a href="#more" class="headerlink" title="more"></a>more</h2><p>文件内容分屏查看器</p>
+<ul>
+<li>more指令是一个基于VI编辑器的文本过滤器，它以全屏幕的方式按页显示文本文件的内容</li>
+<li>man类似的翻页操作，空格翻到下一页，翻到最后即退出，回车则一行一行地往下翻，按b往前</li>
+<li>&#x3D; 查看是第几行</li>
+<li>：f，显示xx文件xx行</li>
+</ul>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a>less</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013192718.png"><br>n,M<br>q退出</p>
+<h1 id="文件目录类其他命令"><a href="#文件目录类其他命令" class="headerlink" title="文件目录类其他命令"></a>文件目录类其他命令</h1><h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>输出内容到控制台<br>跟printline差不多</p>
+<ul>
+<li>eoch 选项 输出内容</li>
+</ul>
+<p>-e</p>
+<ul>
+<li>支持反斜杠控制的字符转换<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013193958.png"></li>
+</ul>
+<p><strong>输入输出重定向</strong><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013194307.png"><br>如果定向的文件不存在，会创建一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $</span><br></pre></td></tr></table></figure>
+<p>可以用来查看环境变量<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013194701.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013194745.png"></p>
+<h2 id="head"><a href="#head" class="headerlink" title="head"></a>head</h2><p>head用来显示文件的开头部分内容，默认情况下head命令显示文件的前10行<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013195208.png"></p>
+<h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><p>tail用来输出文件中尾部的内容，默认情况下tail指令显示文件的后10行<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013195347.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f</span><br></pre></td></tr></table></figure>
+<p>f:follow，用于实时追踪文本文件的更新变化<br>当使用后相当于挂起了一个追踪，可以打开另外的<br>ctrl+s 是暂停，ctrl+q是继续，暂停时收到的数据会一下子输出出来，可以按ctrl+C退出</p>
+<p>但是我们注意到，如果用用vim去编辑不会显示出来？</p>
+<ul>
+<li>每个文件都有一个index，即inode，带索引的节点<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013200053.png"><br>其实是按照索引号进行跟踪，如果我们用vim的话，索引号会发生改变，可以认为其本质上已经变成了另外一个文件</li>
+</ul>
+<h2 id="ln软链接"><a href="#ln软链接" class="headerlink" title="ln软链接"></a>ln软链接</h2><p>ln，link，<br>软链接也称为符号链接，类似于windows里的快捷方式，有自己的数据块，主要存放了链接其他文件的路径 <img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013200423.png"></p>
+<p>-s ：soft软</p>
+<p>cd -P<br>pwd -P<br>访问的是软链接链接的那个真实链接，实际路径</p>
+<h2 id="history"><a href="#history" class="headerlink" title="history"></a>history</h2><p>用来查看已经执行过的历史命令<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013201948.png"></p>
+<p>对于历史命令的重复调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! + 编号</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history -c</span><br></pre></td></tr></table></figure>
+<p>清空历史记录</p>
+<h1 id="时间日期类"><a href="#时间日期类" class="headerlink" title="时间日期类"></a>时间日期类</h1><h2 id="date"><a href="#date" class="headerlink" title="date"></a>date</h2><p>date option format<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013202326.png"><br> <img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013202353.png"><br> <img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013202559.png"></p>
+<p>%s：时间戳，utc标准时间从1970.1.1 到现在秒的计数</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013202821.png"><br>-d 选项的用法</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013202918.png"><br>-s</p>
+<p>怎么同步时钟呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntpdate + ip进行同步</span><br></pre></td></tr></table></figure>
+
+<h2 id="cal"><a href="#cal" class="headerlink" title="cal"></a>cal</h2><p>calender日历</p>
+<ul>
+<li>cal + option 不加选项，直接显示本月日历</li>
+<li><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013203305.png"></li>
+<li><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013203328.png"></li>
+</ul>
+<p>cal+3表示查看三个月，就能查看前一个月，这个月，和后一个月的信息</p>
+<h1 id="用户管理类"><a href="#用户管理类" class="headerlink" title="用户管理类"></a>用户管理类</h1><p>Linux系统本身是一个多用户，多任务的分时操作系统，所以必须给不同的人不同的身份和权限</p>
+<h2 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h2><p>添加新用户<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013204153.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013204439.png"><br>注意：用户名和存放的目录名不一定相同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /etc/passwd</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013204914.png"><br>会发现，系统放了许多伪用户，用于完成系统的服务<br>我们的新用户的uid是从1000开始的<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013205053.png"></p>
+<h2 id="passwd"><a href="#passwd" class="headerlink" title="passwd"></a>passwd</h2><p>passwd + 用户名<br>设置密码</p>
+<h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id + 用户名，查看是否存在该用户</p>
+<h2 id="su"><a href="#su" class="headerlink" title="su"></a>su</h2><p>switch user:跳转切换用户</p>
+<p>快速切回root，因为这个链接会话是一个层层嵌套，我只要层层退出即可exit<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013205521.png"></p>
+<p>如果再跳转中忘记了跳转到哪了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who am i</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013205728.png"></p>
+<h2 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h2><p>设置普通用户具有root权限，临时获取管理员的权限<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013205908.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013210450.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013210406.png"><br>：wq！强制执行</p>
+<h2 id="userdel"><a href="#userdel" class="headerlink" title="userdel"></a>userdel</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013210622.png"><br>删除某用户，但是其文件还在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf tony/</span><br></pre></td></tr></table></figure>
+
+<p>但一般来说不要删文件，因为比如离职，所以要按照需要删除用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel -r david</span><br></pre></td></tr></table></figure>
+<p>这个删除连文件也一起删掉的（remove）</p>
+<h1 id="用户组管理类"><a href="#用户组管理类" class="headerlink" title="用户组管理类"></a>用户组管理类</h1><p>每个用户都有一个用户组，系统对一个用户组中的所有用户进行集合管理。不同Linux系统对用户组的规定有所不同<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013212226.png"></p>
+<p>如Linux下的用户属于和它同名的用户组，这个用户组在创建用户时同时创建</p>
+<p>用户组的管理涉及用户组的添加、删除和修改。组的增加、删除和修改实际上就是对于&#x2F;etc&#x2F;group文件的更新</p>
+<h2 id="groupadd-新增组"><a href="#groupadd-新增组" class="headerlink" title="groupadd 新增组"></a>groupadd 新增组</h2><p>groupadd 组名<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013213452.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013213535.png"></p>
+<h2 id="groupdel-删除组"><a href="#groupdel-删除组" class="headerlink" title="groupdel 删除组"></a>groupdel 删除组</h2><h2 id="usermod-g"><a href="#usermod-g" class="headerlink" title="usermod -g"></a>usermod -g</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013213630.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013213743.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013214117.png"><br>wheel组！<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013214511.png"></p>
+<h2 id="groupmod-n"><a href="#groupmod-n" class="headerlink" title="groupmod -n"></a>groupmod -n</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013213855.png"><br>组的重命名</p>
+<h1 id="文件属性和权限"><a href="#文件属性和权限" class="headerlink" title="文件属性和权限"></a>文件属性和权限</h1><p>文件的属性 <img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013215105.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221013215130.png"></p>
+<ul>
+<li>d打头：director目录</li>
+<li>c：字符文件</li>
+<li>b：快文件</li>
+<li>l：软链接</li>
+<li>-：普通文件</li>
+</ul>
+<p>root root</p>
+<ul>
+<li><p>属主</p>
+</li>
+<li><p>属组</p>
+</li>
+<li><p>属主：创建者user：u</p>
+</li>
+<li><p>属组：组里的其他用户的权限，-表示不能：g</p>
+</li>
+<li><p>其他用户：o</p>
+</li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014084318.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014084407.png"><br>文件上的可修改并不意味着可以删除</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014085010.png"><br>注意：cp之后，权限是不会改变的</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014100012.png"></p>
+<ul>
+<li>如果查看的是文件：链接数指的是硬链接的个数</li>
+<li>如果查看的是文件夹：链接数指的是子文件夹个数</li>
+</ul>
+<h2 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h2><p>ln<br>硬链接意味着直接连在inode上，可以访问存储信息，意味着文件删除并不代表真正的删除，只有硬链接也全部被删除后，才算文件被删除</p>
+<h2 id="chmod改变权限"><a href="#chmod改变权限" class="headerlink" title="chmod改变权限"></a>chmod改变权限</h2><p>chmod–change mod<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014100948.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014101723.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014101929.png"></p>
+<ul>
+<li>可以看成是二进制的表达与十进制的转换：111&#x3D;7<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014102306.png"></li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014102531.png"><br>R-recursive</p>
+<h2 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h2><p>change owner</p>
+<ul>
+<li>chown option finalowner fileor directory</li>
+<li>改变文件或者目录的所有者</li>
+</ul>
+<h2 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h2><p>改变所属组<br>chgrp finalgroup fileordirectory</p>
+<h2 id="综合应用练习"><a href="#综合应用练习" class="headerlink" title="综合应用练习"></a>综合应用练习</h2><p>bigdata组，testing组等等，为了更好地进行组管理，代码的提交和管控，别的组只能访问</p>
+<p>创建两个组，<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014103643.png"></p>
+<p>查看是否加入到我们的系统中<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014103803.png"></p>
+<p>注意：创建组的时候是不断往后创建的，但是比如你删除1001后，再创建，是不会加在1001的位置的，而是加在1005的位置</p>
+<p>创建一系列用户<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014104312.png"></p>
+<p>修改小明的重要代码的权限使得小亮可以访问和阅读该代码</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014110213.png"></p>
+<h1 id="搜索查找类"><a href="#搜索查找类" class="headerlink" title="搜索查找类"></a>搜索查找类</h1><h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>查找文件或者目录<br>find指令将从指定目录向下递归地遍历其各个子目录，将满足条件的文件显示在终端<br>find 搜索范围 选项</p>
+<p>选项说明：<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014110854.png"></p>
+<p>-name<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014111302.png"></p>
+<p>-user<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014111342.png"></p>
+<p>-size<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014111514.png"></p>
+<h2 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h2><p>快速定位文件路径<br>locate指令利用事先建立的系统中所有文件名称及路径的locate数据库实现快速定位给定的文件。Locate指令无需遍历整个文件系统，查询速度较快。为了保证查询结果的准确度，管理员必须定期更新locate时刻（自动更新为每天一次）</p>
+<p>先updatedb<br>随后查找：<br>locate + 文件名</p>
+<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>查找命令的位置<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014112746.png"></p>
+<h2 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h2><p>查找命令的位置</p>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>过滤查找 以及”|”管道符</p>
+<ul>
+<li>管道符，  |  ，表示将前一个命令的处理结果输出传递到后面的命令处理</li>
+<li>grep  option 查找内容 源文件</li>
+<li>-n 显示匹配行及行号</li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014113410.png"></p>
+<h2 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h2><p>word counts<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014122050.png"></p>
+<ul>
+<li>21：行数</li>
+<li>22：单词数</li>
+<li>158：字节数<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014122128.png"></li>
+</ul>
+<h1 id="压缩解压类"><a href="#压缩解压类" class="headerlink" title="压缩解压类"></a>压缩解压类</h1><h2 id="gzip-x2F-gunzip压缩"><a href="#gzip-x2F-gunzip压缩" class="headerlink" title="gzip&#x2F;gunzip压缩"></a>gzip&#x2F;gunzip压缩</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014122337.png"></p>
+<h2 id="zip-x2F-unzip"><a href="#zip-x2F-unzip" class="headerlink" title="zip&#x2F;unzip"></a>zip&#x2F;unzip</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014122706.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014122916.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014122943.png"></p>
+<h2 id="tar打包"><a href="#tar打包" class="headerlink" title="tar打包"></a>tar打包</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014123129.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014123507.png"></p>
+<h1 id="磁盘查看和分区类"><a href="#磁盘查看和分区类" class="headerlink" title="磁盘查看和分区类"></a>磁盘查看和分区类</h1><p>Tree状目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install tree</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014153909.png"></p>
+<p>du 会列出隐藏文件</p>
+<h2 id="du"><a href="#du" class="headerlink" title="du"></a>du</h2><p>查看文件和目录占用的磁盘空间<br>du: disk usage</p>
+<ul>
+<li>du  目录&#x2F;文件   显示目录下每个子目录的磁盘使用情况<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014155558.png"></li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014155857.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014160424.png"><br>这个是不是硬盘被占用的大小呢？<br>这个命令是统计出来的占用，和磁盘的占用还是不一样的<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014160728.png"><br>是通过挂载点连接在一起的</p>
+<h2 id="df"><a href="#df" class="headerlink" title="df"></a>df</h2><p>查看磁盘空间使用情况<br>df ： disk free空余磁盘</p>
+<ul>
+<li>df option 列出文件系统的整体磁盘使用量，检查文件系统的磁盘空间占有情况</li>
+</ul>
+<p>-h： human readable<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014161129.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014161148.png"></p>
+<ul>
+<li>sda1,boot 引导分区</li>
+<li>tmpfs 基于内存的文件</li>
+<li>swap分区作为虚拟内存都是tempfs，&#x2F;dev&#x2F;shm ，shared memory共享内存</li>
+<li>devtmfs 开始启动的时候创建dev，文件系统的挂载点</li>
+</ul>
+<h2 id="free-h"><a href="#free-h" class="headerlink" title="free -h"></a>free -h</h2><p>查看内存使用情况<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014161859.png"></p>
+<h2 id="lsblk"><a href="#lsblk" class="headerlink" title="lsblk"></a>lsblk</h2><p>list block device<br>查看设备挂载情况<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014162121.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014162315.png"><br>sr0是光驱（CD-Read Only Memory，cdrom），我们用来安装时使用过<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014162505.png"></p>
+<p>如果使用不同的选项，还有(根据硬盘的种类，IDE，SATA-规范的支持热插拔,SCSI小型计算机接口)<br>服务器一般为scsi</p>
+<ul>
+<li>hda - IDE</li>
+<li>vda - 虚拟化模拟硬盘</li>
+<li>sda - SATA,SCSI<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014162905.png"></li>
+</ul>
+<p>hdb2，第二块硬盘，第二个分区</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014163116.png"></p>
+<ul>
+<li>系统为每一个分区创建的唯一的制定符</li>
+</ul>
+<h2 id="mount-x2F-umount-挂载-x2F-卸载"><a href="#mount-x2F-umount-挂载-x2F-卸载" class="headerlink" title="mount&#x2F;umount 挂载&#x2F;卸载"></a>mount&#x2F;umount 挂载&#x2F;卸载</h2><p>对于Linux用户来讲，不论有几个分区，分别分给那个目录使用，它总归就是一个根目录，一个独立且唯一的文件结构</p>
+<p>Linux中的每一个分区都是用来组成整个文件系统的一部分，它在用一种叫做“挂载”的处理方法，它整个文件系统中包含了一整套的文件和目录，并将一个分区和一个目录联系起来，要载入的那个分区将使它的存储空间在这个目录下获得<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014163803.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014163949.png"><br>让系统识别出设备</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014164511.png"><br>但是我们希望在命令行里面访问</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014164558.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014164731.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014164757.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014165043.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014165130.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014165222.png"></p>
+<p><strong>设置开机自动挂载</strong></p>
+<ul>
+<li>&#x2F;etc&#x2F;fstab:file system tab<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/fstab</span><br></pre></td></tr></table></figure>
+<img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014165420.png"></li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014165752.png"><br>写入</p>
+<h2 id="fdisk分区"><a href="#fdisk分区" class="headerlink" title="fdisk分区"></a>fdisk分区</h2><p>怎么添加硬盘呢？<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014165847.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014170102.png"></p>
+<p>先添加一个新的硬盘<br>需要reboot才能看到我们的磁盘<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014170616.png"></p>
+<p>接下来我们要对其进行处理<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014170735.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014170803.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014170918.png"><br>只有四个主分区，但是可以吧其中一个变成一个扩展分区，最多16个<img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014170957.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014171050.png"></p>
+<h2 id="mkfs"><a href="#mkfs" class="headerlink" title="mkfs"></a>mkfs</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014171211.png"></p>
+<p>再添加挂载点<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014171341.png"></p>
+<h1 id="进程管理类"><a href="#进程管理类" class="headerlink" title="进程管理类"></a>进程管理类</h1><p>PID - 进程的id<br>xxd.service守护进程</p>
+<h2 id="ps查看当前系统进程状态"><a href="#ps查看当前系统进程状态" class="headerlink" title="ps查看当前系统进程状态"></a>ps查看当前系统进程状态</h2><p>ps:process status</p>
+<ul>
+<li>ps aux|grep xxx 查看系统中所有进程</li>
+<li>ps -ef|grep xxx 可以查看子父进程之间的关系<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014181506.png"></li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014181525.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014182634.png"><br>tty:?表示没有终端</p>
+<p>ssh ——–&gt;sshd（ssh用为客户端，主要进行服务器端的连接；sshd用为服务器端）<br><strong>sshd</strong>为secure shell的简称；可以通过网络在主机中开机shell的服务<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014183800.png"></p>
+<ul>
+<li>3195该进程，1130是父进程</li>
+<li>1130那个是守护进程</li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014184040.png"></p>
+<ul>
+<li>用root下的用户登录，需要给一个权限分离的进程</li>
+</ul>
+<h2 id="kill终止进程"><a href="#kill终止进程" class="headerlink" title="kill终止进程"></a>kill终止进程</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014184236.png"><br>进程号：PID</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014184519.png"><br>把1130守护进程kill掉的话，仅存的用户还是能用，但是不能实现另外的用户的登录</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014184723.png"><br>假如1130被kill，然后仅存的进程也被你关掉了，那就仔也连不上了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
+<p>但是原来父进程变成1的仅存进程的父进程不会变成现在刚启动的sshd进程</p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014185209.png"><br>kill掉现在还在运行的进程-9</p>
+<h2 id="pstree查看进程树"><a href="#pstree查看进程树" class="headerlink" title="pstree查看进程树"></a>pstree查看进程树</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014185452.png"></p>
+<h2 id="top-实时监控系统进程状态"><a href="#top-实时监控系统进程状态" class="headerlink" title="top 实时监控系统进程状态"></a>top 实时监控系统进程状态</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014185701.png"></p>
+<h2 id="netstat显示网络状态和端口占用信息"><a href="#netstat显示网络状态和端口占用信息" class="headerlink" title="netstat显示网络状态和端口占用信息"></a>netstat显示网络状态和端口占用信息</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014190013.png"><br>除了ifconfig和ping，但是能够看到的信息还是太少了</p>
+<ul>
+<li>socket：<img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014190400.png" alt="300">开的门&#x3D;ip+端口号<ul>
+<li>port端口号：0-65535<ul>
+<li>ssh：22</li>
+<li>网页服务：80</li>
+<li>mysql：3306</li>
+<li>一般放在ip：的后面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014190511.png"><ul>
+<li>如果TCP三次接手后，listen就会变成established</li>
+<li>0.0.0.0代表了所有地址对应的端口</li>
+<li>127.0.0.1本地回环地址 &#x3D; local host</li>
+<li>在虚拟机和物理机的关系中：<img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014191447.png">我们认为自己的物理机是本地，虚拟机是远程（port：22）</li>
+<li>在服务器中，虚拟机服务器是local，物理机101.94.97.189是远程</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014191719.png"><br>22：对应的是远程端口虚拟机（虚拟机设置时）<br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014191826.png"><br><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014191915.png"></p>
+<h1 id="系统定时命令"><a href="#系统定时命令" class="headerlink" title="系统定时命令"></a>系统定时命令</h1><h2 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h2><p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014192009.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014192633.png"></p>
+<p><img src="/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/Pasted%20image%2020221014192805.png"><br>具体的以后再说</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">pigudog</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/">http://example.com/2022/11/10/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%AE%9E%E6%93%8D%E7%AF%87/3.1%20%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%ACshell%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/11/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%89%A9%E5%B1%95%E7%AF%87/4.2%20shell%E7%BC%96%E7%A8%8B/"><img class="prev-cover" src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Linux-扩展篇-4.2 shell编程</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%89%A9%E5%B1%95%E7%AF%87/4.1%20%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86/"><img class="next-cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Linux-扩展篇-4.1 软件包管理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/11/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%89%A9%E5%B1%95%E7%AF%87/4.1%20%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86/" title="Linux-扩展篇-4.1 软件包管理"><img class="cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-09</div><div class="title">Linux-扩展篇-4.1 软件包管理</div></div></a></div><div><a href="/2022/11/11/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%89%A9%E5%B1%95%E7%AF%87/4.2%20shell%E7%BC%96%E7%A8%8B/" title="Linux-扩展篇-4.2 shell编程"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-11</div><div class="title">Linux-扩展篇-4.2 shell编程</div></div></a></div><div><a href="/2022/11/11/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%89%A9%E5%B1%95%E7%AF%87/4.3%20conda%E4%B8%8ELinux/" title="Linux-扩展篇-4.2 conda与Linux"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-11</div><div class="title">Linux-扩展篇-4.2 conda与Linux</div></div></a></div><div><a href="/2022/10/01/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%85%A5%E9%97%A8%E7%AF%87/1.1%20%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F/" title="Linux-基础篇-1.1 认识Linux系统"><img class="cover" src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-01</div><div class="title">Linux-基础篇-1.1 认识Linux系统</div></div></a></div><div><a href="/2022/10/01/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%85%A5%E9%97%A8%E7%AF%87/%E4%B8%89%E7%A7%8D%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="Linux-三种服务器"><img class="cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-01</div><div class="title">Linux-三种服务器</div></div></a></div><div><a href="/2022/10/05/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%9F%BA%E7%A1%80%E7%AF%87/2.1%20%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" title="Linux-基础篇-2.1 文件管理"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-05</div><div class="title">Linux-基础篇-2.1 文件管理</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">pigudog</div><div class="author-info__description">冲冲冲！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">82</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/pigudog"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pigudog" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2205638116@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">帮助命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">目录操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pwd%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">pwd：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cd"><span class="toc-number">2.2.</span> <span class="toc-text">cd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ls"><span class="toc-number">2.3.</span> <span class="toc-text">ls</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mkdir"><span class="toc-number">2.4.</span> <span class="toc-text">mkdir:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rmdir"><span class="toc-number">2.5.</span> <span class="toc-text">rmdir</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">文件操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#touch"><span class="toc-number">3.1.</span> <span class="toc-text">touch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp"><span class="toc-number">3.2.</span> <span class="toc-text">cp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rm"><span class="toc-number">3.3.</span> <span class="toc-text">rm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mv"><span class="toc-number">3.4.</span> <span class="toc-text">mv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cat"><span class="toc-number">3.5.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more"><span class="toc-number">3.6.</span> <span class="toc-text">more</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less"><span class="toc-number">3.7.</span> <span class="toc-text">less</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%B1%BB%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">文件目录类其他命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#echo"><span class="toc-number">4.1.</span> <span class="toc-text">echo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#head"><span class="toc-number">4.2.</span> <span class="toc-text">head</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tail"><span class="toc-number">4.3.</span> <span class="toc-text">tail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ln%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="toc-number">4.4.</span> <span class="toc-text">ln软链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#history"><span class="toc-number">4.5.</span> <span class="toc-text">history</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">时间日期类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#date"><span class="toc-number">5.1.</span> <span class="toc-text">date</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cal"><span class="toc-number">5.2.</span> <span class="toc-text">cal</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">用户管理类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#useradd"><span class="toc-number">6.1.</span> <span class="toc-text">useradd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#passwd"><span class="toc-number">6.2.</span> <span class="toc-text">passwd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#id"><span class="toc-number">6.3.</span> <span class="toc-text">id</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#su"><span class="toc-number">6.4.</span> <span class="toc-text">su</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sudo"><span class="toc-number">6.5.</span> <span class="toc-text">sudo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#userdel"><span class="toc-number">6.6.</span> <span class="toc-text">userdel</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">用户组管理类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#groupadd-%E6%96%B0%E5%A2%9E%E7%BB%84"><span class="toc-number">7.1.</span> <span class="toc-text">groupadd 新增组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#groupdel-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-number">7.2.</span> <span class="toc-text">groupdel 删除组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usermod-g"><span class="toc-number">7.3.</span> <span class="toc-text">usermod -g</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#groupmod-n"><span class="toc-number">7.4.</span> <span class="toc-text">groupmod -n</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E5%92%8C%E6%9D%83%E9%99%90"><span class="toc-number">8.</span> <span class="toc-text">文件属性和权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E9%93%BE%E6%8E%A5"><span class="toc-number">8.1.</span> <span class="toc-text">硬链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chmod%E6%94%B9%E5%8F%98%E6%9D%83%E9%99%90"><span class="toc-number">8.2.</span> <span class="toc-text">chmod改变权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chown"><span class="toc-number">8.3.</span> <span class="toc-text">chown</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chgrp"><span class="toc-number">8.4.</span> <span class="toc-text">chgrp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E7%BB%83%E4%B9%A0"><span class="toc-number">8.5.</span> <span class="toc-text">综合应用练习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%9F%A5%E6%89%BE%E7%B1%BB"><span class="toc-number">9.</span> <span class="toc-text">搜索查找类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#find"><span class="toc-number">9.1.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#locate"><span class="toc-number">9.2.</span> <span class="toc-text">locate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#which"><span class="toc-number">9.3.</span> <span class="toc-text">which</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whereis"><span class="toc-number">9.4.</span> <span class="toc-text">whereis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">9.5.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wc"><span class="toc-number">9.6.</span> <span class="toc-text">wc</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%B1%BB"><span class="toc-number">10.</span> <span class="toc-text">压缩解压类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gzip-x2F-gunzip%E5%8E%8B%E7%BC%A9"><span class="toc-number">10.1.</span> <span class="toc-text">gzip&#x2F;gunzip压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip-x2F-unzip"><span class="toc-number">10.2.</span> <span class="toc-text">zip&#x2F;unzip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar%E6%89%93%E5%8C%85"><span class="toc-number">10.3.</span> <span class="toc-text">tar打包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%88%86%E5%8C%BA%E7%B1%BB"><span class="toc-number">11.</span> <span class="toc-text">磁盘查看和分区类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#du"><span class="toc-number">11.1.</span> <span class="toc-text">du</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#df"><span class="toc-number">11.2.</span> <span class="toc-text">df</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#free-h"><span class="toc-number">11.3.</span> <span class="toc-text">free -h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lsblk"><span class="toc-number">11.4.</span> <span class="toc-text">lsblk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mount-x2F-umount-%E6%8C%82%E8%BD%BD-x2F-%E5%8D%B8%E8%BD%BD"><span class="toc-number">11.5.</span> <span class="toc-text">mount&#x2F;umount 挂载&#x2F;卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fdisk%E5%88%86%E5%8C%BA"><span class="toc-number">11.6.</span> <span class="toc-text">fdisk分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mkfs"><span class="toc-number">11.7.</span> <span class="toc-text">mkfs</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E7%B1%BB"><span class="toc-number">12.</span> <span class="toc-text">进程管理类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ps%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-number">12.1.</span> <span class="toc-text">ps查看当前系统进程状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kill%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8B"><span class="toc-number">12.2.</span> <span class="toc-text">kill终止进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pstree%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E6%A0%91"><span class="toc-number">12.3.</span> <span class="toc-text">pstree查看进程树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top-%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-number">12.4.</span> <span class="toc-text">top 实时监控系统进程状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#netstat%E6%98%BE%E7%A4%BA%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E4%BF%A1%E6%81%AF"><span class="toc-number">12.5.</span> <span class="toc-text">netstat显示网络状态和端口占用信息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9A%E6%97%B6%E5%91%BD%E4%BB%A4"><span class="toc-number">13.</span> <span class="toc-text">系统定时命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#crontab"><span class="toc-number">13.1.</span> <span class="toc-text">crontab</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA6/" title="Introduction to WES"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Introduction to WES"/></a><div class="content"><a class="title" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA6/" title="Introduction to WES">Introduction to WES</a><time datetime="2022-11-16T16:00:00.000Z" title="Created 2022-11-17 00:00:00">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA9/" title="Introduction to Single-cell RNA-seq"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Introduction to Single-cell RNA-seq"/></a><div class="content"><a class="title" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA9/" title="Introduction to Single-cell RNA-seq">Introduction to Single-cell RNA-seq</a><time datetime="2022-11-16T16:00:00.000Z" title="Created 2022-11-17 00:00:00">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0%E4%BA%91%E8%AE%A1%E7%AE%97Linux/" title="No title"><img src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/11/16/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0%E4%BA%91%E8%AE%A1%E7%AE%97Linux/" title="No title">No title</a><time datetime="2022-11-16T10:59:40.005Z" title="Created 2022-11-16 18:59:40">2022-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/DA/Untitled/" title="No title"><img src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/11/16/DA/Untitled/" title="No title">No title</a><time datetime="2022-11-16T10:59:11.677Z" title="Created 2022-11-16 18:59:11">2022-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AF%BC%E8%AE%BA/BI9/" title="No title"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/11/16/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AF%BC%E8%AE%BA/BI9/" title="No title">No title</a><time datetime="2022-11-16T10:58:44.969Z" title="Created 2022-11-16 18:58:44">2022-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By pigudog</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://pigudog.com">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

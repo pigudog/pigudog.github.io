@@ -1,0 +1,622 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>RNA-seq | PiguDog的小屋</title><meta name="keywords" content="DA"><meta name="author" content="pigudog,2205638116@qq.com"><meta name="copyright" content="pigudog"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="周末培训 https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;HGT7XBmggGEO数据分析 https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;19S0XYlVcgRNA-seq https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;38y7pmgzLgWES  https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;1iDucLlG5gChIP-seq  https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;11taEb9ZYg 参考笔记： htt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RNA-seq">
+<meta property="og:url" content="http://example.com/2022/08/01/BIA5/index.html">
+<meta property="og:site_name" content="PiguDog的小屋">
+<meta property="og:description" content="周末培训 https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;HGT7XBmggGEO数据分析 https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;19S0XYlVcgRNA-seq https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;38y7pmgzLgWES  https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;1iDucLlG5gChIP-seq  https:&#x2F;&#x2F;mubu.com&#x2F;doc&#x2F;11taEb9ZYg 参考笔记： htt">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html">
+<meta property="article:published_time" content="2022-07-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-08T14:27:16.635Z">
+<meta property="article:author" content="pigudog">
+<meta property="article:tag" content="DA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/08/01/BIA5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: pigudog","link":"Link: ","source":"Source: PiguDog的小屋","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RNA-seq',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-08 22:27:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">82</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">PiguDog的小屋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RNA-seq<a class="post-edit-link" href="https://github.com/pigudog/_posts/BIA5.md" title="Edited on" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-07-31T16:00:00.000Z" title="Created 2022-08-01 00:00:00">2022-08-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-11-08T14:27:16.635Z" title="Updated 2022-11-08 22:27:16">2022-11-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/computer/">computer</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/computer/DA/">DA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="RNA-seq"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="/2022/08/01/BIA5/Pasted%20image%2020221018175535.png"><br>周末培训 <a target="_blank" rel="noopener" href="https://mubu.com/doc/HGT7XBmgg">https://mubu.com/doc/HGT7XBmgg</a><br>GEO数据分析 <a target="_blank" rel="noopener" href="https://mubu.com/doc/19S0XYlVcg">https://mubu.com/doc/19S0XYlVcg</a><br>RNA-seq <a target="_blank" rel="noopener" href="https://mubu.com/doc/38y7pmgzLg">https://mubu.com/doc/38y7pmgzLg</a><br>WES  <a target="_blank" rel="noopener" href="https://mubu.com/doc/1iDucLlG5g">https://mubu.com/doc/1iDucLlG5g</a><br>ChIP-seq  <a target="_blank" rel="noopener" href="https://mubu.com/doc/11taEb9ZYg">https://mubu.com/doc/11taEb9ZYg</a></p>
+<p>参考笔记： <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e34398ca8b29">https://www.jianshu.com/p/e34398ca8b29</a></p>
+<h1 id="RNA-seq"><a href="#RNA-seq" class="headerlink" title="RNA-seq"></a>RNA-seq</h1><p>主要流程</p>
+<ul>
+<li>环境配置</li>
+<li>RNA-seq的原始数据 (raw data) 的质量评估</li>
+<li>raw data的过滤和清楚不可信数据 (clean reads)</li>
+<li>reads的回帖基因组合转录组 (alignment)</li>
+<li>计数 (count)</li>
+<li>基因的差异分析 (Gene DE)</li>
+<li>数据的下有分析</li>
+</ul>
+<h2 id="001-知识点了解"><a href="#001-知识点了解" class="headerlink" title="001 知识点了解"></a>001 知识点了解</h2><h3 id="fastq测序文件"><a href="#fastq测序文件" class="headerlink" title="fastq测序文件"></a>fastq测序文件</h3><p>具体信息可以查看<a href="BIA1.md">BIA1</a><br>在 illumina 的测序文件中，采用双端测序 (paired-end), 一个样本得到的是seq_1.fastq.gz 和 seq_2.fastq.gz, 每个文件存放一段测序文件。在illumina的测序的cDNA锻炼被修饰为一下的形式（参考： <a target="_blank" rel="noopener" href="https://blog.csdn.net/sixu_9days/article/details/78948914%EF%BC%89">https://blog.csdn.net/sixu_9days/article/details/78948914）</a><br><img src="/2022/08/01/BIA5/8i7t5xmr.bmp"></p>
+<h3 id="fastqc报告的阅读"><a href="#fastqc报告的阅读" class="headerlink" title="fastqc报告的阅读"></a>fastqc报告的阅读</h3><h4 id="Basic-Statistics"><a href="#Basic-Statistics" class="headerlink" title="Basic Statistics"></a>Basic Statistics</h4><p>从read水平来总览，判断测序质量。 </p>
+<ul>
+<li><strong>Encoding</strong> ：测序平台的版本，因为不同版本的 error p的计算方法不一样。 </li>
+<li><strong>Total sequence</strong>：测序深度。一共测序的read数。是质量分析的主要参数。 </li>
+<li><strong>Sequence length</strong>：测序长度。 </li>
+<li><strong>%GC</strong>：GC碱基含量比，一般是物种特异性，比如人类是42%左右<ul>
+<li>碱基配对：A 与 T or U, G 与C ，故记为ATGC</li>
+</ul>
+</li>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221107182840.png"></li>
+</ul>
+<h4 id="Perbase-sequence-quality"><a href="#Perbase-sequence-quality" class="headerlink" title="Perbase sequence quality"></a>Perbase sequence quality</h4><p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107153430.png"></p>
+<ul>
+<li><strong>横坐标：</strong> 第1-100个测序得到的碱基 <strong>纵坐标：</strong> 测序质量评估。这里的$Q&#x3D;-10lg10(error P)$,即20代表1%的错误读取率，30%代表0.1%的错误读取率 </li>
+<li><strong>箱型图：</strong> 红色线，是某个顺序下测序碱基所有测序质量的中位数。黄色块，是测序质量在25%-75%区域。蓝色线，平均数。 </li>
+<li><strong>一般要求：</strong> Q30。这儿可以看出蛮不错的</li>
+</ul>
+<h4 id="per-tail-sequence-quality"><a href="#per-tail-sequence-quality" class="headerlink" title="per tail sequence quality"></a>per tail sequence quality</h4><p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107183235.png"></p>
+<ul>
+<li><strong>横坐标</strong>：同上。 </li>
+<li><strong>纵坐标</strong>：tail的index编号。 </li>
+<li><strong>目的</strong>：防止测序过程中某些tail受不可控因素测序质量低。 </li>
+<li><strong>标准</strong>：蓝色表示质量高，浅色或暖色表示质量低，后续的分析可以去除低质量tail。</li>
+</ul>
+<h3 id="hisat2介绍"><a href="#hisat2介绍" class="headerlink" title="hisat2介绍"></a>hisat2介绍</h3><p>hisat是一种高效的RNA-seq实验比对工具。它使用了基于BWT和Ferragina-manzini(Fm) index 两种算法的索引框架。使用了两类索引去比对，一类是全基因组范围的FM索引来锚定每一个比对，另一类是大量的局部索引对这些比对做快速的扩展。</p>
+<p>官方手册： <a target="_blank" rel="noopener" href="https://daehwankimlab.github.io/hisat2/manual/">https://daehwankimlab.github.io/hisat2/manual/</a></p>
+<h2 id="002环境配置"><a href="#002环境配置" class="headerlink" title="002环境配置"></a>002环境配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">free -g</span><br><span class="line"># g: giga</span><br><span class="line">## display the amount of memory in gigabytes</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221105141204.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<p>竟然发现原来的挂载点莫名其妙掉了，mount了一下<a href="BIA3.md">BIA3</a></p>
+<p>或者用du or tree去查看当前的文件夹及其占比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -lh </span><br><span class="line">ll</span><br><span class="line"># 这个两个的区别？</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221105143209.png"><br>我只能说区别不大</p>
+<h3 id="一些生信基础知识的了解（自行学习）"><a href="#一些生信基础知识的了解（自行学习）" class="headerlink" title="一些生信基础知识的了解（自行学习）"></a>一些生信基础知识的了解（自行学习）</h3><h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>网页搜索<br><img src="/2022/08/01/BIA5/Pasted%20image%2020221105143626.png"></p>
+<p>或者搜公众号<br><a target="_blank" rel="noopener" href="https://weixin.sogou.com/weixin?ie=utf8&amp;s_from=input&amp;_sug_=y&amp;_sug_type_=&amp;type=2&amp;query=ucsc">https://weixin.sogou.com/weixin?ie=utf8&amp;s_from=input&amp;_sug_=y&amp;_sug_type_=&amp;type=2&amp;query=ucsc</a></p>
+<h4 id="数据格式的整理和熟记"><a href="#数据格式的整理和熟记" class="headerlink" title="数据格式的整理和熟记"></a>数据格式的整理和熟记</h4><ul>
+<li>fastq,fasta,sam,bam,vcf,gff,gtf,bed,MAF</li>
+<li><a href="BIA1.md">BIA1</a></li>
+</ul>
+<h4 id="基因层面对于生物信息学的认识"><a href="#基因层面对于生物信息学的认识" class="headerlink" title="基因层面对于生物信息学的认识"></a>基因层面对于生物信息学的认识</h4><p>参考生物信息学导论即可<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12s41137HY/?p=3&spm_id_from=pageDriver&vd_source=360bc66c11e9b8c05a44ec9aa5da35c9">RNA-seq: 2-转录组破冰之旅</a>中有部分介绍</p>
+<h3 id="文献阅读-流程整理"><a href="#文献阅读-流程整理" class="headerlink" title="文献阅读+流程整理"></a>文献阅读+流程整理</h3><p>得到如下的流程学习记录：数据处理流程</p>
+<ul>
+<li>数据资源下载，参考基因组及参考转录组<ul>
+<li>gtf，genome，fa</li>
+</ul>
+</li>
+<li>质控，需要fastqc以及multiqc<ul>
+<li>trimmomatic, cutadapt(一个python软件，the reason for python2), trim-galore</li>
+</ul>
+</li>
+<li>比对<ul>
+<li>star, hisat2, tophat(tophat2已经是新版本了), bowtie2, bwa, subread</li>
+</ul>
+</li>
+<li>计数<ul>
+<li>featureCounts(subread的一种), htseq(-counts), bedtools, deeptools</li>
+</ul>
+</li>
+<li>normalization 归一化<ul>
+<li>DEseq2, edgeR, limma(voom)<blockquote>
+<p>注意：安装之前可以搜索一下是否存在</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文献检索-参考基因组下载"><a href="#文献检索-参考基因组下载" class="headerlink" title="文献检索+参考基因组下载"></a>文献检索+参考基因组下载</h3><p>human: hg19 or hg38</p>
+<ul>
+<li>比如我们搜索 <code>hg38 ftp ucsc</code><ul>
+<li><a target="_blank" rel="noopener" href="https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/">https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/</a></li>
+<li><a target="_blank" rel="noopener" href="https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/">https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/</a></li>
+</ul>
+</li>
+<li>我们在bigZIPs中找到<ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105145035.png"></li>
+<li>hg38.fa.gz : 这就是参考基因组，一般压缩比是1：3</li>
+</ul>
+</li>
+<li>我们新建一个目录放参考基因组<ul>
+<li><code>mkdir reference/</code></li>
+<li><code>mkdir ~/reference/hg38</code></li>
+<li><code>wget https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz</code></li>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105145533.png"></li>
+<li>速度还是很快的<ul>
+<li>下载后使用less查看，发现开头的N是没测序好的意思：dna_rm: Interspersed repeats and lowcomplexity regions are detected with the RepeatMasker tool and maskedby replacing repeats with ‘N’s.</li>
+<li>大小写字母：dan_sm: soft-masked genomic DNA. All repeats and low complexity regions have been replaced with lowercased versions of their nucleic base(重复序列和低复杂度空间)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>搜索的方式还有很不<ul>
+<li><code>hg38 ftp ncbi</code><ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105150223.png"></li>
+</ul>
+</li>
+<li><code>hg38 ftp esemble</code><ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105150244.png"></li>
+<li>注意这儿fasta点进去是一个文件夹：<img src="/2022/08/01/BIA5/Pasted%20image%2020221105150342.png"><ul>
+<li>选择toplevel即可<code>wget https://ftp.ensembl.org/pub/release-108/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_rm.toplevel.fa.gz</code></li>
+</ul>
+</li>
+<li>这儿的gtf和gtf3，是不同的，<ul>
+<li>我们所要的是基因的注释，通常情况下选择chr.结尾的即可<img src="/2022/08/01/BIA5/Pasted%20image%2020221105150851.png"></li>
+<li><code>wget https://ftp.ensembl.org/pub/release-108/gtf/homo_sapiens/Homo_sapiens.GRCh38.108.chr.gtf.gz</code>但是速度反而变慢了<img src="/2022/08/01/BIA5/Pasted%20image%2020221105151713.png"></li>
+<li>该文件包含的是基因的名字，和基因的转录本的一系列信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>完成：<ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105162534.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><ul>
+<li>刚开始下载软件包括有源代码的软件的安装以及对于二进制软件的下载和配置真的贼恶心</li>
+<li>选择conda配置我们的文件（这儿声明一下在R于Rstudio等配置时个人更倾向于自己去配置）<ul>
+<li>尽管root权限下yun或者apt-get真的很香，但是一般来说我们还是没有root权限的，所以就需要用到最强的非root软件管理器conda</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$</span><span class="language-bash">(<span class="built_in">uname</span> -m)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以返回我们机器的信息，比如x86-64</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221105153320.png"></p>
+<ul>
+<li>我们的conda已经配置过了，可以查看<a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%89%A9%E5%B1%95%E7%AF%87/4.3%20conda%E4%B8%8ELinux.md">4.3 conda与Linux</a></li>
+<li>注意别丢了：<ul>
+<li><code>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda</code></li>
+<li><code>conda config --get</code><ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105154033.png"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>下面构建一个测试环境<ul>
+<li><code>conda create -n rna python=2 bwa</code><ul>
+<li>进入：<code>conda activate rna</code></li>
+</ul>
+</li>
+<li>安装软件<ul>
+<li>下载前检查：<img src="/2022/08/01/BIA5/Pasted%20image%2020221105155512.png"></li>
+<li><code>conda install fastqc multiqc</code></li>
+<li><code>conda install trimmomatic</code></li>
+<li><code>conda install -y trim-galore</code></li>
+<li><code>conda install -y star hisat2 bowtie2</code></li>
+<li><code>conda install -y subread tophat htseq bedtools deeptools</code></li>
+<li><code>conda nstall -y salmon</code></li>
+<li><code>conda install samtools=1.16.1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当然我们最好还要了解一下conda的一些结构<ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105162706.png"></li>
+<li><code>ll ./local/envs</code><ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105162748.png"></li>
+<li>可以看到我们创建的环境</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/chenxy_bwave/article/details/119996001">一些命令</a><ul>
+<li><code>conda update conda</code></li>
+<li><code>conda update Anaconda</code></li>
+<li><code>conda create --help</code></li>
+<li><code>conda create -n env_name python=2</code></li>
+<li><code>conda env list</code></li>
+<li><code>conda remove -n name --all</code></li>
+<li><code>conda info -e</code></li>
+<li><code>conda info --envs</code></li>
+<li><code>conda activate env_name</code></li>
+<li><code>conda deactivate</code></li>
+<li><code>conda remove --name env_name --all</code></li>
+<li><code>conda remove --name env_name package_name</code></li>
+<li><code>conda list</code></li>
+<li><code>conda search package_name</code></li>
+<li><code>conda install numpy=0.20.3</code></li>
+<li><code>conda update numpy</code></li>
+<li><code>conda install pkg_name -c conda_forge</code></li>
+<li><code>conda uninstall package_name</code></li>
+<li><code>conda clean -p</code>      # 删除没有用的包 –packages</li>
+<li><code>conda clean -t</code>      # 删除tar打包 –tarballs</li>
+<li><code>conda clean -y -a</code>ll # 删除所有的安装包及cache(索引缓存、锁定文件、未使用过的包和tar包)</li>
+</ul>
+</li>
+<li>&#x2F;envs&#x2F;rna&#x2F;bin目录的理解 <ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105164057.png"><code>/home/local/envs/rna/bin:/home/local/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/pigudogzyy100/.local/bin:/home/pigudogzyy100/bin</code></li>
+<li>对比一下<img src="/2022/08/01/BIA5/Pasted%20image%2020221105164228.png"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="003-实战"><a href="#003-实战" class="headerlink" title="003-实战"></a>003-实战</h2><h3 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h3><p><img src="/2022/08/01/BIA5/17.png"></p>
+<ul>
+<li>先找到文献的GSE<ul>
+<li>GSE52778</li>
+</ul>
+</li>
+<li>网址套路<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE52778">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE52778</a></li>
+</ul>
+</li>
+<li>通常高通量测序数据都放在了这里：SRA<ul>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221105165030.png"></li>
+</ul>
+</li>
+<li>点开sra<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/sra?term=SRP033351">https://www.ncbi.nlm.nih.gov/sra?term=SRP033351</a></li>
+<li>跳转到如下的界面<img src="/2022/08/01/BIA5/Pasted%20image%2020221105165633.png" alt="300"></li>
+</ul>
+</li>
+<li>点击 send results to Run selector<ul>
+<li>找到此处的accession list<img src="/2022/08/01/BIA5/Pasted%20image%2020221105165830.png"></li>
+<li>会得到相应的accession list:<img src="/2022/08/01/BIA5/Pasted%20image%2020221105165910.png"></li>
+</ul>
+</li>
+</ul>
+<p>为了方便后续的处理我们先新建一个文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/project/airway</span><br><span class="line">cd ~/project/airway</span><br></pre></td></tr></table></figure>
+<p>创建一个id</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(rna) [pigudogzyy100@VM-4-17-centos airway]$ cat id</span><br><span class="line">SRR1039508</span><br><span class="line">SRR1039509</span><br><span class="line">SRR1039510</span><br><span class="line">SRR1039511</span><br><span class="line">SRR1039512</span><br><span class="line">SRR1039513</span><br><span class="line">SRR1039514</span><br><span class="line">SRR1039515</span><br><span class="line">SRR1039516</span><br><span class="line">SRR1039517</span><br><span class="line">SRR1039518</span><br><span class="line">SRR1039519</span><br><span class="line">SRR1039520</span><br><span class="line">SRR1039521</span><br><span class="line">SRR1039522</span><br><span class="line">SRR1039523</span><br></pre></td></tr></table></figure>
+
+<p>现在开始下载：</p>
+<ul>
+<li>先下载prefetch<ul>
+<li><code>conda install -y prefetch</code> -&gt;sratoolkit 也找不到，所以我们手动下载<ul>
+<li>找到对应的github地址： <a target="_blank" rel="noopener" href="https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit">https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit</a></li>
+</ul>
+</li>
+<li>&#96;wget <a target="_blank" rel="noopener" href="https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-centos_linux64.tar.gz&#39;">https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-centos_linux64.tar.gz&#39;</a></li>
+<li><code>wget --output-document sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-centos_linux64.tar.gz</code></li>
+<li><code>tar zxvf sratoolkit.3.0.0-centos_linux64.tar.gz</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d1abdced8bcd">https://www.jianshu.com/p/d1abdced8bcd</a> 可以参考这个文档继续，但是讨厌去配置环境路径</li>
+<li><code>conda install -c daler sratoolkit</code>即可安装，但是这儿由于我们刚开始的owner有所不同<code>chmod -R 775 /home/local/envs/rna</code>需要更改一下文件的权限<ul>
+<li>也可以直接修改文件所有者root下，<code>chown -R pigudogzyy100 /home/local/envs/rna</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>我们先尝试下载一个：但是报错了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name incorrect while evaluating path within network system module - Scheme is &#x27;https&#x27;</span><br><span class="line">网上找到的solution-&gt; The solution is to remove your old software and install new software. Please see our Wiki for additional information.</span><br></pre></td></tr></table></figure>
+<p>也就是说我们的版本太老了：发现名字改了叫做：sra-tools</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove sratoolkit</span><br></pre></td></tr></table></figure>
+
+<p>但是反手又是一个报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection failed while opening file within cryptographic module - mbedtls_ssl_handshake returned -9984 ( X509 - Certificate verification failed, e.g. CRL, CA or signature check failed )</span><br></pre></td></tr></table></figure>
+
+<p>无语了，所以接下来我们使用手动安装这个包<br>配置环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export export PATH=$PATH:/home/pigudogzyy100/biosoft/sratoolkit.3.0.0-centos_linux64/bin&#x27;</span> &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>pwd可以直接获取地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>检查prefetch的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefetch -V</span><br></pre></td></tr></table></figure>
+
+<p>又是报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">This sra toolkit installation has not been configured.</span><br><span class="line">Before continuing, please run: vdb-config --interactive</span><br><span class="line">For more information, see https://www.ncbi.nlm.nih.gov/sra/docs/sra-cloud/</span><br></pre></td></tr></table></figure>
+
+<p>检查后尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export export PATH=$PATH:/home/pigudogzyy100/biosoft/sratoolkit.3.0.0-centos_linux64/bin&#x27; &gt;&gt; ~/.bashrc</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>还是原来那个错误：于是运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vdb-config --interactive</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit">https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit</a><br>参考官网教程进行安装：现在已经不需要进行手动选择了，可以直接使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastq-dump --stdout -X 2 SRR390728</span><br></pre></td></tr></table></figure>
+<p>即可</p>
+<p>再次尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefetch SRR1039516</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221105181212.png"><br>可以看到已经开始下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(base) [pigudogzyy100@VM-4-17-centos project]$ prefetch SRR1039508</span><br><span class="line"></span><br><span class="line">2022-11-05T10:12:55 prefetch.3.0.0: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.</span><br><span class="line">2022-11-05T10:12:56 prefetch.3.0.0: 1) Downloading &#x27;SRR1039508&#x27;...</span><br><span class="line">2022-11-05T10:12:56 prefetch.3.0.0: SRA Normalized Format file is being retrieved, if this is different from your preference, it may be due to current file availability.</span><br><span class="line">2022-11-05T10:12:56 prefetch.3.0.0:  Downloading via HTTPS...</span><br><span class="line">2022-11-05T10:18:12 prefetch.3.0.0:  HTTPS download succeed</span><br><span class="line">2022-11-05T10:18:16 prefetch.3.0.0:  &#x27;SRR1039508&#x27; is valid</span><br><span class="line">2022-11-05T10:18:16 prefetch.3.0.0: 1) &#x27;SRR1039508&#x27; was downloaded successfully</span><br></pre></td></tr></table></figure>
+
+<p>所以我们既可以进行批量的下载了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat id | while read id; do echo $id; done</span><br><span class="line">cat id | while read id; do prefetch $id; done</span><br><span class="line">cat id | while read id; do (prefetch $id &amp;); done # 挂在后台慢慢下</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">top</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">top命令可以查看后台</span></span><br><span class="line"></span><br><span class="line">ps -ef |grep pre</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于调用任务管理器</span></span><br><span class="line"></span><br><span class="line">kill 8091</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以结束任务; 这是一个很安全的命令</span></span><br><span class="line"></span><br><span class="line">ps -ef | grep prefe|awk &#x27;&#123;print $2&#125;&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看对应的编号-&gt; <span class="built_in">kill</span></span></span><br><span class="line">ps -ef | grep prefe|awk &#x27;&#123;print $2&#125;&#x27; | while read id ;do kill $id;done</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221105185009.png"><br><img src="/2022/08/01/BIA5/Pasted%20image%2020221105185133.png"></p>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221106112349.png"></p>
+<p>下载地址的获取（下面是一个循环的方式）:<br>参考网址 <a target="_blank" rel="noopener" href="http://www.bio-info-trainee.com/2218.html">http://www.bio-info-trainee.com/2218.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for ((i=677;i&lt;=680;i++)) ;do wget [ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByStudy/sra/SRP/SRP029/SRP029245](ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByStudy/sra/SRP/SRP029/SRP029245)/SRR957$i/SRR957$i.sra;done</span><br><span class="line"></span><br><span class="line">ls *sra |while read id; do ~/biosoft/sratoolkit/sratoolkit.2.6.3-centos_linux64/bin/fastq-dump --split-3 $id;done</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><h4 id="质检"><a href="#质检" class="headerlink" title="质检"></a>质检</h4><p><img src="/2022/08/01/BIA5/Pasted%20image%2020221106112531.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastq-dump --help</span><br></pre></td></tr></table></figure>
+<p>查看一下fastq-dump的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastq-dump --gzip --split-3 -O ./ /home/pigudogzyy100/project/airway/SRR1039508/SRR1039508.sra </span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107090655.png"><br>可以看到已经在生成了</p>
+<p>问题又来了，如果我们发现我们下载的东西是错的，那我们应该如何查看运行日志呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less raw/nohup.out</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当然在此之前我们先介绍一下后台运行其中一个运行方式nohup<ul>
+<li>nohup - no hang up</li>
+<li>意思就是不挂断运行，用nohup运行命令可以使命令永久执行下去，和用户终端没有关系，断开SSH不影响运行，nohup捕获了SIGHUP，并做了忽略处理，因此当屏幕关闭，断网等造成ssh中断时进程不会退出。但是ctrl+c可以关闭关闭该进程。因此大多数情况同时使用nohup和&amp;启动的程序，ctrl+c和关闭终端都无法关闭。在缺省情况下所有输出都被重定向到一个名为nohup.out的文件中。</li>
+<li><code>nohup Command \[ Arg ...\] \[ &amp; \]</code></li>
+<li>比如：后天不断执行<code>./test.sh</code>, stdout 输出给<code>out.log</code>, stderr输出给 <code>err.log</code>, 就可以使用如下的代码<code>nohup ./test.sh &gt; out.log 2&gt;err.log &amp;</code><ul>
+<li>相关的数字的含义：0 - stdin(standard input); 1 - stdout(standard output), 是缺省行为; 2 - stderr(standard error)</li>
+</ul>
+</li>
+<li>ctrl + z：将正在前台执行的命令放到后台，且让命令处于暂停状态</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java FileTest  &gt; /dev/null 2&gt;&amp;1 &amp; </span><br></pre></td></tr></table></figure>
+<p>command &gt;out.file是将command的输出重定向到out.file文件，即输出内容不打印到屏幕上，而是输出到out.file文件中。 2&gt;&amp;1 是将标准出错重定向到标准输出，这里的标准输出已经重定向到了out.file文件，即将标准出错也输出到out.file文件中。最后一个&amp; ， 是让该命令在后台执行。</p>
+<p>试想2&gt;1代表什么，2与&gt;结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 不输出文件</span><br><span class="line">nohup java FileTest  &gt; /dev/null 2&gt;&amp;1 &amp; </span><br><span class="line"></span><br><span class="line"># 输出文件</span><br><span class="line">nohup java FileTest  &gt; test.log 2&gt;&amp;1 &amp; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 所以可以尝试如下的代码</span><br><span class="line">nohup fastq-dump --gzip --split-3 -O ./ /home/pigudogzyy100/project/airway/SRR1039509/SRR1039509.sra &gt; test.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107093349.png"><br>这里我们是故意打错目录防止其真的继续运行下去<br><img src="/2022/08/01/BIA5/Pasted%20image%2020221107093440.png"><br>如果打对会有如下的效果<br><img src="/2022/08/01/BIA5/Pasted%20image%2020221107093619.png"></p>
+<p>下面我们对我们的文件进行fastqc处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fastqc SRR1039508_1.fastq.gz</span><br><span class="line"></span><br><span class="line"># 如果文件不在当前文件夹</span><br><span class="line">fastqc /home/pigudogzyy/project/airway/raw/SRR1039508_1.fastq.gz -o 自己的目录 </span><br><span class="line"></span><br><span class="line"># 这个软件的问题是跑完才告诉你output没有权限</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107094150.png"></p>
+<p>我最后是使用Rserver打开并copy出来的<br><img src="/2022/08/01/BIA5/Pasted%20image%2020221107153326.png"><br><img src="/2022/08/01/BIA5/Pasted%20image%2020221107153430.png"><br>可以看到我们使用的encoding是sanger&#x2F;Illumina </p>
+<ul>
+<li>sequence flagged as poor quality 的数量为零</li>
+<li>共测序序列22935521</li>
+<li><img src="/2022/08/01/BIA5/Pasted%20image%2020221107153836.png"><ul>
+<li>可以看到我们还有去除adapter - 这是质量控制的一部分</li>
+<li>在文库构建的阶段，为了能够上级测序，会在插入片段的两端添加adapter序列，当测序读长超过了插入片段长度时，就会读取adapter序列</li>
+<li>adapter序列是认为引入的序列，而我们只关心插入片段的测序结果，所以首先要做的就是去除adapter序列。<ul>
+<li>由于测序错误率的原因，测序的得到的adapter序列会和原来的adapter序列存在几个碱基的误差，所以去除adapter序列时必须允许碱基的错配</li>
+<li>由于插入片段的长度在一定范围内控制和变化，而adapter序列出现在两端，所以测序读到的adapter写可能只是原来adapter的部分序列</li>
+</ul>
+</li>
+<li>参考地址： <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43569478/article/details/108079222">https://blog.csdn.net/weixin_43569478/article/details/108079222</a></li>
+</ul>
+</li>
+</ul>
+<p>我们会看我们的数据：<br><img src="/2022/08/01/BIA5/Pasted%20image%2020221107154558.png" alt="300"><br>我们现将所有的数据都先fastq-dump出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for ((i=510;i&lt;=522;i++)) ; do (nohup fastq-dump --gzip --split-3 -O ./ /home/pigudogzyy100/project/airway/SRR1039$i/SRR1039$i.sra &gt; test.log 2&gt;&amp;1 &amp;); done </span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107155127.png"><br>后台直接跑满- 但是好像就用了两个核，后续可能要学习一下如何使用多线程操作。</p>
+<p>我们等待top查看终端运行结束之后，进行fastqc<br>为了更好的分组我们将其全部移入raw文件夹后再进行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ./raw</span><br><span class="line">mv *.gz ./raw</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls *.gz |xargs fastqc -t 6 -o ./</span><br><span class="line"># 等价的写法</span><br><span class="line">fastqc *.gz -t 6 -o ./</span><br><span class="line"># 这儿的-t 10就是10线程</span><br><span class="line"></span><br><span class="line">nohup ls *.gz |xargs fastqc -t 6 -o ./ &gt; test.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107174206.png"><br>查看test.log日志发现已经在处理了</p>
+<p>在进行multiqc将这些信息合并, 这样质量的查看就完成了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multiqc ./</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107201827.png"></p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>使用一个万能的软件 trim-galore<br>-&gt; filter the bad quality reads and remove adaptors</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ./clean</span><br><span class="line">cd ./clean</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trim-galore --help</span><br><span class="line"></span><br><span class="line"># 发现报错bash: trim-galore: command not found...</span><br><span class="line"></span><br><span class="line">conda install -y trim-galore</span><br></pre></td></tr></table></figure>
+
+<p>似乎安装成功了，但是好像还是没用？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda update -n base conda</span><br><span class="line"># 系统提示我更新</span><br></pre></td></tr></table></figure>
+
+<p>最后发现尽管他叫trim-galore, 但是其实它是用命令trim_galore</p>
+<p>trim-galore：可以处理illumina，nextera3，smallRNA测序平台的双端和单端数据，包括去除adapter和低质量reads。 <strong>trim_galore的参数</strong>： trim_galore的参数在处理过程比较重要：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">trim_galore [options] &lt;filename&gt;</span><br><span class="line">--quality&lt;int&gt;  #设定phred quality阈值。默认20（99%的read质量），如果测序深度较深，可以设定25</span><br><span class="line">--phred33       #设定记分方式，代表Q+33=ASCII码的方式来记分方式。这是默认值。</span><br><span class="line">--paired          # 对于双端结果，一对reads中若一个read因为质量或其他原因被抛弃，则对应的另一个read也抛弃。</span><br><span class="line">--output_dir   #输出目录，需确保路径存在并可以访问</span><br><span class="line">--length        #设定长度阈值，小于此长度会被抛弃。这里测序长度是64,所以我们改成35，减少相互之间的重叠</span><br><span class="line">--stringency     #设定可以忍受的前后adapter重叠的碱基数，默认是1,这玩意的理解可以参考BIA1对于fastq文件的分析</span><br><span class="line">-e&lt;ERROR rate&gt;  #设定默认质量控制数，默认是0.1(Q30)，即ERROR rate大于10%的read 会被舍弃，如果添加来--paired参数则会舍弃一对reads</span><br><span class="line">&lt;filename&gt;  #如果是采用illumina双端测序的测序文件，应该同时输入两个文件。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bin_trim_galore = trim_galore</span><br><span class="line">dir = &quot;./clean&quot;</span><br><span class="line">fq1 = &quot;./raw/SRR1039521_1.fastq.gz&quot;</span><br><span class="line">$bin_trim_galore --quality 25 --phred33 --length 35 -e 0.1 --stringency 3 --paired -o $dir $fq1 $fq2</span><br><span class="line"># 但这样只能处理一个</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls /home/pigudogzyy100/project/airway/raw/*_1.fastq.gz &gt;a</span><br><span class="line">ls /home/pigudogzyy100/project/airway/raw/*_2.fastq.gz &gt;b</span><br><span class="line">paste a b &gt; config_file</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 这个脚本可能有一定的问题因为好像没法直接激活我们的环境</span><br><span class="line">conda activate rna</span><br><span class="line"></span><br><span class="line">cat $1 |while read id</span><br><span class="line">do</span><br><span class="line">	arr=($id)</span><br><span class="line">	fq1=$&#123;arr[0]&#125;</span><br><span class="line">	fq2=$&#123;arr[1]&#125;</span><br><span class="line">bin_trim_galore = trim-galore</span><br><span class="line">dir = &quot;/home/pigudogzyy100/project/airway/clean&quot;</span><br><span class="line">nohup $bin_trim_galore -q 25 --phred33 --length 35 -e 0.1 --stringency 3 --paired -o $dir $fq1 $fq2 $</span><br><span class="line"></span><br><span class="line">conda activate rna</span><br><span class="line"></span><br><span class="line">## 然后运行</span><br><span class="line">bash clean.sh config_file</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 可以学习一下这个运行的方式，发现这一步是没有问题的</span><br><span class="line">trim_galore -output ../clean --paired --length 35 -e 0.1 -q 25 --stringency 5 SRR1039508_1.fastq.gz SRR1039508_2.fastq.gz</span><br><span class="line"></span><br><span class="line">cat config_file |while read id;do arr=$id; fq=$&#123;arr[1]&#125;; echo $arr ;done</span><br><span class="line"># 这个输出的是1和2</span><br><span class="line">cat config_file |while read id;do arr=$&#123;id&#125;; fq=$&#123;arr[0]&#125;; echo $fq ;done</span><br><span class="line"># 这儿对变量的操作好像有点问题,输出为空-》需要我们对linux有进一步的学习</span><br><span class="line"></span><br><span class="line">cat config_file |while read id;do arr=$&#123;id&#125;; fq1=$&#123;arr[0]&#125;;fq2=$&#123;arr[1]&#125;;nohup trim_galore -q 25 --phred33 --length 36 -e 0.1 --stringency 3 --paired -o ../clean $fq1 $fq2 &amp;;done</span><br><span class="line"># 这个是可以运行的，所以刚才我们没法操作的主要原因应该是我们的环境配置没有成功</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107210616.png"></p>
+<p>所以脚本文件应该如何配置环境呢？</p>
+<ul>
+<li>发现其实是可以不需要activate的，那到底错误在哪呢？</li>
+<li>暂时还没有发现，因为linux的基础还不够扎实，待后续的整理</li>
+</ul>
+<h4 id="比对"><a href="#比对" class="headerlink" title="比对"></a>比对</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61847802#:~:text=trim_galore%E7%9A%84%E5%8F%82%E6%95%B0%20%EF%BC%9A%20trim_galore%E7%9A%84%E5%8F%82%E6%95%B0%E5%9C%A8%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%EF%BC%9A%20trim_galore%20%5Boptions%5D%20%3Cfilename%3E,--quality%3Cint%3E%20%23%E8%AE%BE%E5%AE%9Aphred%20quality%E9%98%88%E5%80%BC%E3%80%82%20%E9%BB%98%E8%AE%A420%EF%BC%8899%25%E7%9A%84read%E8%B4%A8%E9%87%8F%EF%BC%89%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%B5%8B%E5%BA%8F%E6%B7%B1%E5%BA%A6%E8%BE%83%E6%B7%B1%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AE%BE%E5%AE%9A25%20--phred33%20%23%E8%AE%BE%E5%AE%9A%E8%AE%B0%E5%88%86%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%BB%A3%E8%A1%A8Q%2B33%3DASCII%E7%A0%81%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E8%AE%B0%E5%88%86%E6%96%B9%E5%BC%8F%E3%80%82">参考1</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/369749492">参考2</a></p>
+<ul>
+<li>hisat2, subjunc, star 对于转录组比较流行</li>
+<li>bwa, bowtie是针对基因组的</li>
+</ul>
+<p><strong>构建索引</strong><br>构建索引每个软件都不一样，我们需要对于参考基因组进行比对</p>
+<ul>
+<li><strong>概况</strong>：使用处理后的fastq文件和基因组与转录组比对，确定在转录组或者基因组中的关系。在转录组和基因组的比对采取的方案不同。分别是<code>ungapped alignment to transcriptome</code>和<code>Gapped aligenment to genome</code>。</li>
+<li><strong>软件</strong>：<code>hisat2</code>和<code>STAR</code>在比对回帖上都有比较好的表现。有文献显示，hisat2在纳伪较少但是弃真较多，但是速度比较快。STAR就比对而言综合质量比较好，在长短reads回帖上都有良好发挥。由于hisat2的速度优势，选择hisat2作为本次比对的软件。 在比对之前首先要先进行索引文件的获取或者制作。</li>
+</ul>
+<p>索引文件的获取</p>
+<ul>
+<li>不同的比对软件构建索引的方式不同-&gt;所用的索引也不尽相同</li>
+<li>索引文件可以去网站下载，也可以自己构建</li>
+<li>网站下载hisat2基因组索引：<a href="https://link.zhihu.com/?target=http://ccb.jhu.edu/software/hisat2/index.shtml">http://ccb.jhu.edu/software/hisat2/index.shtml</a></li>
+<li>本地索引文件构建参考了CSDN<a href="https://link.zhihu.com/?target=https://me.csdn.net/qq_40280759">@ Richard_Jolin</a>的<a href="https://link.zhihu.com/?target=https://blog.csdn.net/qq_40280759/article/details/80552193">构建过程</a></li>
+<li>索引文件的格式如下，是由多个文件构成，要保证索引文件的格式和名称部分一致。</li>
+</ul>
+<p>这儿的索引建立比较慢，后续进行补充</p>
+<ol>
+<li>直接到hisat2的官网下载 <a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaomotong123/article/details/106474127#:~:text=HISAT2%EF%BC%8C%E5%8F%96%E4%BB%A3Bowtie%2FTopHat%E7%A8%8B%E5%BA%8F%EF%BC%8C%E8%83%BD%E5%A4%9F%E5%B0%86RNA-Seq%E7%9A%84%E8%AF%BB%E5%8F%96%E4%B8%8E%E5%9F%BA%E5%9B%A0%E7%BB%84%E8%BF%9B%E8%A1%8C%E5%BF%AB%E9%80%9F%E6%AF%94%E5%AF%B9%E3%80%82%20HISAT%E5%88%A9%E7%94%A8%E5%A4%A7%E9%87%8FFM%E7%B4%A2%E5%BC%95%EF%BC%8C%E4%BB%A5%E8%A6%86%E7%9B%96%E6%95%B4%E4%B8%AA%E5%9F%BA%E5%9B%A0%E7%BB%84%E3%80%82%20Index%E7%9A%84%E7%9B%AE%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9%E3%80%82%20%E7%94%B1%E4%BA%8E%E7%89%A9%E7%A7%8D%E7%9A%84%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%BA%8F%E5%88%97%E6%AF%94%E8%BE%83%E9%95%BF%EF%BC%8C%20%E5%A6%82%E6%9E%9C%E5%B0%86%E6%B5%8B%E5%BA%8F%E5%BA%8F%E5%88%97%E4%B8%8E%E6%95%B4%E4%B8%AA%E5%9F%BA%E5%9B%A0%E7%BB%84%E8%BF%9B%E8%A1%8C%E6%AF%94%E5%AF%B9%EF%BC%8C%E5%88%99%E4%BC%9A%E9%9D%9E%E5%B8%B8%E8%80%97%E6%97%B6%E3%80%82%20%E5%9B%A0%E6%AD%A4%E9%87%87%E7%94%A8%E5%B0%86%E6%B5%8B%E5%BA%8F%E5%BA%8F%E5%88%97%E5%92%8C%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84Index%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E6%AF%94%E5%AF%B9%EF%BC%8C%E4%BC%9A%E8%8A%82%E7%9C%81%E5%BE%88%E5%A4%9A%E6%97%B6%E9%97%B4%E3%80%82,%E4%BB%A5%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%BA%E4%BE%8B%EF%BC%8C%E5%AE%83%E9%9C%80%E8%A6%8148%2C000%E4%B8%AA%E7%B4%A2%E5%BC%95%EF%BC%8C%E6%AF%8F%E4%B8%AA%E7%B4%A2%E5%BC%95%E4%BB%A3%E8%A1%A8~64%2C000%20bp%E7%9A%84%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%8C%BA%E5%9F%9F%E3%80%82%20%E8%BF%99%E4%BA%9B%E5%B0%8F%E7%9A%84%E7%B4%A2%E5%BC%95%E7%BB%93%E5%90%88%E5%87%A0%E7%A7%8D%E6%AF%94%E5%AF%B9%E7%AD%96%E7%95%A5%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BA%86RNA-Seq%E8%AF%BB%E5%8F%96%E7%9A%84%E9%AB%98%E6%95%88%E6%AF%94%E5%AF%B9%EF%BC%8C%E7%89%B9%E5%88%AB%E6%98%AF%E9%82%A3%E4%BA%9B%E8%B7%A8%E8%B6%8A%E5%A4%9A%E4%B8%AA%E5%A4%96%E6%98%BE%E5%AD%90%E7%9A%84%E8%AF%BB%E5%8F%96%E3%80%82%20%E5%B0%BD%E7%AE%A1%E5%AE%83%E5%88%A9%E7%94%A8%E5%A4%A7%E9%87%8F%E7%B4%A2%E5%BC%95%EF%BC%8C%E4%BD%86HISAT%E5%8F%AA%E9%9C%80%E8%A6%814.3%20GB%E7%9A%84%E5%86%85%E5%AD%98%E3%80%82%20%E8%BF%99%E7%A7%8D%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%94%AF%E6%8C%81%E4%BB%BB%E4%BD%95%E8%A7%84%E6%A8%A1%E7%9A%84%E5%9F%BA%E5%9B%A0%E7%BB%84%EF%BC%8C%E5%8C%85%E6%8B%AC%E9%82%A3%E4%BA%9B%E8%B6%85%E8%BF%8740%E4%BA%BF%E4%B8%AA%E7%A2%B1%E5%9F%BA%E7%9A%84%E3%80%82">参考</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1703051">https://cloud.tencent.com/developer/article/1703051</a><br> 找到需要下载的基因<img src="/2022/08/01/BIA5/Pasted%20image%2020221107220400.png"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#下载 H. sapiens, UCSC hg38 genome</span><br><span class="line">nohup wget https://genome-idx.s3.amazonaws.com/hisat/hg38_genome.tar.gz &gt; test.log 2&gt;&amp;1 &amp;</span><br><span class="line">#下载 H. sapiens, UCSC hg38 genome_tran	</span><br><span class="line">nohup wget https://genome-idx.s3.amazonaws.com/hisat/hg38_tran.tar.gz &gt; test.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hg38_genome.<span class="property">tar</span>.<span class="property">gz</span></span><br><span class="line">tar -zxvf hg38_tran.<span class="property">tar</span>.<span class="property">gz</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108140236.png"><br><img src="/2022/08/01/BIA5/Pasted%20image%2020221108140110.png"><br>生成了一个文件夹hg38，另一个生成了hg38_tran的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查看解压后的文件</span><br><span class="line">ll -h ./hg38</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108141754.png"></p>
+<ol start="2">
+<li>自己建立，但是真的很慢<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://cloud.biohpc.swmed.edu/index.php/s/hisat2-220-Linux_x86_64/download</span><br><span class="line">unzip download</span><br><span class="line">sudo vim /etc/profile</span><br><span class="line">export PATH=$PATH:hisat2-2.2.0的路径    #文件/etc/profile末行添加hisat2的绝对路径,保存后退出。</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 注意：</span><br><span class="line"># 千万不要傻乎乎的先去下载人类基因组，再用Hisat2-build建立索引！！！</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">extract_exons.py gencode.v19.anonotation.gff3 &gt; genome.exon    #从基因组注释文件中获取exon信息</span><br><span class="line">extract_splice_sites.py gencode.v19.anonotation.gff3 &gt; genome.ss    #从基因组注释文件中获取splice_site信息</span><br><span class="line">extract_snps.py snp.txt &gt; genome.snp    #获取SNP信息</span><br><span class="line"></span><br><span class="line">hisat2-build hg19.fa -p 12 ~/T_exercise/hg19_idx/hg19</span><br><span class="line">#-p指定线程数，--ss:splice_site信息，--exon:exon信息，~/T_exercise/hg19_idx/hg19:索引文件夹。</span><br><span class="line"># 注意~/T_exercise/hg19_idx文件夹要提前建立好，hg19是索引名称，运行几十分钟后会得到下图8个索引文件。</span><br><span class="line"># 如果使用--snp，--ss和/或--exon选项，hisat2-build将需要大约200GB的运行内存来满足人类基因组规模大小的基因组的索引构建，因为建立索引涉及到graph construction。如果你的电脑和笔者一样只有拮据的8或16G，务必不要再hisat-build中添加--snp,--ss,--exon等选项。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -p 12 -x ./hg19_idx/hg19 -1 ./sra/SRR3589956_1.fastq -2 ./sra/SRR3589956_2.fastq -S ./sam/SRR3589956.sam</span><br><span class="line">#-p    指定线程数</span><br><span class="line">#-x    索引文件前缀</span><br><span class="line">#-1和-2    第一个和第二个fastq,也支持fastq.gz</span><br><span class="line">#-S    输出的sam文件名</span><br></pre></td></tr></table></figure>
+
+<p><strong>比对</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd ./test</span><br><span class="line">ls ../raw</span><br><span class="line">ls ../raw/*.gz |while read id;do (zcat $id |head -1000 &gt; ???);done # 怎么输出呢？</span><br><span class="line"></span><br><span class="line"># 使用basename，并学习dirname, 一个掐头一个去尾</span><br><span class="line">ls ../clean/*gz |while read id;do (echo $(basename $id));done</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221107213116.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls ../clean/*.gz |while read id; do (zcat $id|head -1000 &gt; $(basename $id));done</span><br></pre></td></tr></table></figure>
+<p>看起来是gz，但是其实不是压缩包<br><img src="/2022/08/01/BIA5/Pasted%20image%2020221107213501.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -p 10 -x 索引地址 -1 fastq1 -2 fastq2</span><br><span class="line"></span><br><span class="line">hisat2 -p 10 -x /home/pigudogzyy100/reference/index/hisat2/hg38/hg38/genome -1 SRR1039508_1_val_1.fa.gz -2 SRR1039508_2_val_2.fa.gz</span><br><span class="line"># 不要打文件夹名字也不要打后面的名字</span><br></pre></td></tr></table></figure>
+
+<p>但是这儿报错不是gzip format，所以读不进来，我们需要去掉gz,或者在原来的代码上做修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls *gz | while read id;do (mv $id $&#123;id%%.*&#125;);done</span><br><span class="line">ls *gz | while read id;do (echo $&#123;id%%.*&#125;);done</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls ../clean/*.gz |while read id; do (zcat $id|head -1000 &gt; $(basename $id &quot;.gz&quot;));done</span><br></pre></td></tr></table></figure>
+
+<p>然后开始比对<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3b43fd15d39a">参考</a><br>hisat2：将测序结果比对到人类参考基因组上。HISAT2是TopHat2&#x2F;Bowti2的继任者，使用改进的BWT算法，实现了更快的速度和更少的资源占用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -p 10 -x /home/pigudogzyy100/reference/index/hisat2/hg38/hg38/genome -1 SRR1039508_1_val_1.fq -2 SRR1039508_2_val_2.fq -S tmp.hisat2.sam</span><br><span class="line"></span><br><span class="line"># 也就是</span><br><span class="line">hisat2 -p 1- -x hisat2 -p 10 -x home/pigudogzyy100/reference/index/hisat2/hg38/hg38/genome -1 $&#123;id&#125;_1_val_1.fq -2 $&#123;id&#125;_2_val_2.fq</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108163554.png"><br>可以看到我们的比对率还是很高的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># subjunc</span><br><span class="line"># https://subread.sourceforge.net/ 官网</span><br><span class="line"># 解压 - 刚开始未解压直接建立基因组索引被killed掉了</span><br><span class="line">tar -zxvf hg38_genome.tar.gz</span><br><span class="line"># 创建index的路径</span><br><span class="line">mkdir /home/pigudogzyy100/reference/index/subread/hg38/</span><br><span class="line"># 构建基因组索引</span><br><span class="line">subread-buildindex -o /home/pigudogzyy100/reference/index/subread/hg38/ hg38.fa</span><br><span class="line"></span><br><span class="line">subjunc -T 5 -i /home/pigudogzyy100/reference/index/subread/hg38/subread -r SRR1039508_1_val_1.fq -R SRR1039508_2_val_2.fq -o tmp.subjunc.bam</span><br><span class="line"># 注意这儿是一个bam不是sam</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108175436.png"><br>有可能是我们下载的fa文件出现问题，暂时先不管这个了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># bowtie</span><br><span class="line">bowtie2 -p 10 -x /home/pigudogzyy100/reference/index/bowtie/hg38 -1 SRR1039508_1_val_1.fq -2 SRR1039508_2_val_2.fq -S tep.bowtie.sam</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># bwa</span><br><span class="line">bwa mem -t 5 -M /home/pigudogzyy100/reference/index/bwa/hg38 -1 SRR1039508_1_val_1.fq SRR1039508_2_val_2.fq &gt; tmp.bwa.sam</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108185754.png"></p>
+<p>下面我们用samtools，将sam文件转化为bam</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">samtools sort -O bam -@ 5 -o tmp.hisat2.bam tmp.hisat2.sam</span><br></pre></td></tr></table></figure>
+
+<p>报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">samtools: error while loading shared libraries: libcrypto.so.1.0.0: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>这儿报错的原因是conda下载的samtools的版本太低了<br><a target="_blank" rel="noopener" href="https://github.com/merenlab/anvio/issues/1479">https://github.com/merenlab/anvio/issues/1479</a><br>这里写的很清楚，重新安装如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c bioconda samtools=1.9 --force-reinstall</span><br></pre></td></tr></table></figure>
+<p>或者刚开始安装的时候：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install samtools=1.9</span><br></pre></td></tr></table></figure>
+<p>不会再出现上述问题。</p>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108185952.png"><br>但是反手又是一个报错，后来发现不是报错我真的好呆<br>This is not an error. It’s just informing you it’s merging files it had to split. Your output files are fine. Source: I use samtools all the time and get this message.<br>参考： <a target="_blank" rel="noopener" href="https://www.reddit.com/r/bioinformatics/comments/bh66jj/bam_sort_core_merging_from_4_files_and_1_inmemory/">https://www.reddit.com/r/bioinformatics/comments/bh66jj/bam_sort_core_merging_from_4_files_and_1_inmemory/</a></p>
+<p>得到我们的bam文件之后，再less是没有用了的，整个文件的大小也大大缩小了</p>
+<p>下载基因组浏览器IGV<br><a target="_blank" rel="noopener" href="https://software.broadinstitute.org/software/igv/download">https://software.broadinstitute.org/software/igv/download</a><br><img src="/2022/08/01/BIA5/Pasted%20image%2020221108185029.png"><br>但是我们在使用IGV之前先理解一下直接的查看<br>这时候我们可以这样查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">samtools view tmp.hisat.bam</span><br><span class="line">samtools tview -R /home/pigudogzyy100/reference/index/genome/hg38/hg38.fa tmp.hisat.bam</span><br><span class="line"></span><br><span class="line"># 统计</span><br><span class="line">samtools flagstat tmp.bwa.bam</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108191053.png"><br>然后就可以goto到相应的位置</p>
+<p>感受一下参数的引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.sam |xargs -i head &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>批量处理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.sam|<span class="keyword">while</span> <span class="built_in">read</span> <span class="built_in">id</span>; <span class="keyword">do</span> (samtools <span class="built_in">sort</span> -O bam -@ 5 -o $(<span class="built_in">basename</span> <span class="variable">$id</span> <span class="string">&quot;.sam&quot;</span>).bam <span class="variable">$id</span>);<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="built_in">ls</span> *.bam |xargs -i samtools index &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -p 5 -x 索引地址 -1 SRR1039508_1_val_1.fq -2 SRR1039508_2_val_2.fq -S tmp.hisat.sam</span><br><span class="line"><span class="built_in">ls</span> *.sam | <span class="keyword">while</span> <span class="built_in">read</span> <span class="built_in">id</span> ;<span class="keyword">do</span> (samtools <span class="built_in">sort</span> -O bam -@ 5 -o $(<span class="built_in">basename</span> <span class="variable">$id</span> <span class="string">&#x27;.sam&#x27;</span>).bam <span class="variable">$id</span>) ;<span class="keyword">done</span>  <span class="comment"># 批量转换为bam，把后缀.sam去掉换成bam</span></span><br><span class="line">samtools view tmp.bowtie.bam | less -S  <span class="comment">#查看bam文件，可试试IGV可视化查看</span></span><br><span class="line"><span class="built_in">ls</span> *.bam | xargs -i samtools index &#123;&#125;  <span class="comment">#批量为bam文件建索引，xargs -i把bam文件作为参数传递给samtools，&#123;&#125;代替了bam文件</span></span><br><span class="line"><span class="built_in">ls</span> *bam | <span class="keyword">while</span> <span class="built_in">read</span> <span class="built_in">id</span> ;<span class="keyword">do</span> (samtools flagstat -@ 10 <span class="variable">$id</span> &gt; $(<span class="built_in">basename</span> <span class="variable">$id</span> <span class="string">&#x27;.bam&#x27;</span>).flagstat) ;<span class="keyword">done</span>  <span class="comment"># flagstat 统计</span></span><br><span class="line"><span class="comment"># 统计结果 可以 mv *flagstat stat/ </span></span><br><span class="line"><span class="built_in">cat</span> *flagstat | <span class="built_in">cut</span> -d <span class="string">&#x27; &#x27;</span> -f 1 | <span class="built_in">paste</span> - - - - - - - - - - - - - <span class="comment"># 合并所有的flagstat文件的第一列，每个flagstat文件都为13行，有13个-</span></span><br><span class="line"></span><br><span class="line">multiqc可以对不同软件做的flagstat进行合并</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108213015.png"></p>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108191339.png"><br>先对文件名进行分割</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.gz | cut -d&quot;_&quot; -f 1 |sort -u</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108191450.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -p 1- -x hisat2 -p 10 -x /home/pigudogzyy100/reference/index/hisat2/hg38/hg38/genome -1 $&#123;id&#125;_1_val_1.fq -2 $&#123;id&#125;_2_val_2.fq</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ls *.gz | cut -d&quot;_&quot; -f 1 |sort -u | while read id; do ls -lh $&#123;id&#125;_1_val_1.fq.gz $&#123;id&#125;_1_val_1.fq.gz </span><br></pre></td></tr></table></figure>
+
+<p>现在我们就可以不仅仅对于一个文件进行操作而进行批量的操作了，把当前文件夹里的fastq数据，用hisat2或bowtie软件，按顺序比对到hg38</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> *fq | <span class="built_in">cut</span> -d <span class="string">&quot;_&quot;</span> -f 1 | <span class="built_in">sort</span> -u | <span class="keyword">while</span> <span class="built_in">read</span> <span class="built_in">id</span> ;<span class="keyword">do</span> (<span class="built_in">ls</span> -lh <span class="variable">$&#123;id&#125;</span>_1_val_1.fq <span class="variable">$&#123;id&#125;</span>_2_val_2.fq | hisat2 -p 5 -x /home/pigudogzyy100/reference/index/hisat2/hg38/hg38/genome -1 <span class="variable">$&#123;id&#125;</span>_1_val_1.fq -2 <span class="variable">$&#123;id&#125;</span>_2_val_2.fq -S <span class="variable">$id</span>.hisat.sam);<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">ls</span> *fq | <span class="built_in">cut</span> -d <span class="string">&quot;_&quot;</span> -f 1 | <span class="built_in">sort</span> -u | <span class="keyword">while</span> <span class="built_in">read</span> <span class="built_in">id</span> ;<span class="keyword">do</span> (<span class="built_in">ls</span> -lh <span class="variable">$&#123;id&#125;</span>_1_val_1.fq <span class="variable">$&#123;id&#125;</span>_2_val_2.fq | bowtie2 -p 5 -x /home/pigudogzyy100/reference/index/hisat2/hg38/hg38/genome -1 <span class="variable">$&#123;id&#125;</span>_1_val_1.fq -2 <span class="variable">$&#123;id&#125;</span>_2_val_2.fq &gt; <span class="variable">$id</span>.bowtie.sam);<span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="定量"><a href="#定量" class="headerlink" title="定量"></a>定量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> *.sam | <span class="keyword">while</span> <span class="built_in">read</span> <span class="built_in">id</span> ;<span class="keyword">do</span> (samtools <span class="built_in">sort</span> -O bam -@ 5 -o $(<span class="built_in">basename</span> <span class="variable">$id</span> <span class="string">&#x27;.sam&#x27;</span>).bam <span class="variable">$id</span>) ;<span class="keyword">done</span></span><br><span class="line"><span class="built_in">nohup</span> featureCounts -T 10 -p -t exon -g gene_id -a /home/pigudogzyy100/reference/genome/hg38/gtf/Homo_sapiens.GRCh38.108.chr.gtf.gz -o all.id.txt *bam 1&gt;count.log 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="comment">#  featureCounts 进行定量，统计比对在这个基因的坐标上的read数</span></span><br><span class="line">multiqc all.id.txt.summary  <span class="comment">#用multiqx对上步得到的结果进行可视化</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/01/BIA5/Pasted%20image%2020221108214542.png"><br>报了个错，后来发现是文件目录没有设置好<br><img src="/2022/08/01/BIA5/Pasted%20image%2020221108214724.png"><br>现在我们就有了想要的txt</p>
+<h4 id="表达矩阵探索"><a href="#表达矩阵探索" class="headerlink" title="表达矩阵探索"></a>表达矩阵探索</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">rm<span class="punctuation">(</span><span class="built_in">list</span> <span class="operator">=</span> ls<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">options<span class="punctuation">(</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">a<span class="operator">=</span> read.table<span class="punctuation">(</span><span class="string">&#x27;all.id.txt&#x27;</span><span class="punctuation">,</span>header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span>  <span class="comment">#header</span></span><br><span class="line">meta<span class="operator">=</span>a<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">6</span><span class="punctuation">]</span></span><br><span class="line">exprSet<span class="operator">=</span>a<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">7</span><span class="operator">:</span>ncol<span class="punctuation">(</span>a<span class="punctuation">)</span><span class="punctuation">]</span></span><br><span class="line">a2<span class="operator">=</span>exprSet<span class="punctuation">[</span><span class="punctuation">,</span><span class="string">&#x27;SRR1039508.hisat.bam&#x27;</span><span class="punctuation">]</span>  <span class="comment">##</span></span><br><span class="line">library<span class="punctuation">(</span>pheatmap<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>corrplot<span class="punctuation">)</span></span><br><span class="line">png<span class="punctuation">(</span><span class="string">&#x27;heatmap.png&#x27;</span><span class="punctuation">)</span></span><br><span class="line">corrplot<span class="punctuation">(</span>cor<span class="punctuation">(</span>exprSet<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">pheatmap<span class="punctuation">(</span>scale<span class="punctuation">(</span>cor<span class="punctuation">(</span>log2<span class="punctuation">(</span>exprSet<span class="operator">+</span><span class="number">1</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">dev.off<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">## </span></span><br><span class="line">library<span class="punctuation">(</span>airway<span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span><span class="string">&quot;airway&quot;</span><span class="punctuation">)</span></span><br><span class="line">exprSet<span class="operator">=</span>assay<span class="punctuation">(</span>airway<span class="punctuation">)</span></span><br><span class="line">a1<span class="operator">=</span>exprSet<span class="punctuation">[</span><span class="punctuation">,</span><span class="string">&#x27;SRR1039508&#x27;</span><span class="punctuation">]</span>  <span class="comment">##</span></span><br><span class="line">group_list<span class="operator">=</span>colData<span class="punctuation">(</span>airway<span class="punctuation">)</span><span class="punctuation">[</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">]</span></span><br><span class="line"><span class="comment">##hclust, 层次聚类包</span></span><br><span class="line">colnames<span class="punctuation">(</span>exprSet<span class="punctuation">)</span><span class="operator">=</span>paste<span class="punctuation">(</span>group_list<span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span>ncol<span class="punctuation">(</span>exprSet<span class="punctuation">)</span><span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&#x27;_&#x27;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">##difine nodePar</span></span><br><span class="line">nodePar<span class="operator">=</span><span class="built_in">list</span><span class="punctuation">(</span>lab.cex<span class="operator">=</span><span class="number">0.6</span><span class="punctuation">,</span> pch<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="literal">NA</span><span class="punctuation">,</span> <span class="number">19</span><span class="punctuation">)</span><span class="punctuation">,</span>cex<span class="operator">=</span><span class="number">0.7</span><span class="punctuation">,</span>col<span class="operator">=</span><span class="string">&#x27;blue&#x27;</span><span class="punctuation">)</span></span><br><span class="line">hc<span class="operator">=</span>hclust<span class="punctuation">(</span>dist<span class="punctuation">(</span>t<span class="punctuation">(</span>log2<span class="punctuation">(</span>exprSet<span class="operator">+</span><span class="number">1</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">par<span class="punctuation">(</span>mar<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">5</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">)</span><span class="punctuation">)</span>  <span class="comment">#par函数设置图形边距，mar参数设置边距</span></span><br><span class="line">png<span class="punctuation">(</span><span class="string">&#x27;hclust.png&#x27;</span><span class="punctuation">,</span>res <span class="operator">=</span> <span class="number">120</span><span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>as.dendrogram<span class="punctuation">(</span>hc<span class="punctuation">)</span><span class="punctuation">,</span>nodePar<span class="operator">=</span>nodePar<span class="punctuation">,</span>horiz<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line">dev.off<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">a2<span class="operator">=</span>data.frame<span class="punctuation">(</span>id<span class="operator">=</span>meta<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span>a2<span class="operator">=</span>a2<span class="punctuation">)</span></span><br><span class="line">a1<span class="operator">=</span>data.frame<span class="punctuation">(</span>id<span class="operator">=</span><span class="built_in">names</span><span class="punctuation">(</span>a1<span class="punctuation">)</span><span class="punctuation">,</span>a1<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>stringr<span class="punctuation">)</span>  <span class="comment">#stringr包处理字符串</span></span><br><span class="line">a2<span class="operator">$</span>id<span class="operator">=</span>str_split<span class="punctuation">(</span>a2<span class="operator">$</span>id<span class="punctuation">,</span><span class="string">&#x27;\\.&#x27;</span><span class="punctuation">,</span>simplify <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span><span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span></span><br><span class="line">tmp<span class="operator">=</span>merge<span class="punctuation">(</span>a1<span class="punctuation">,</span>a2<span class="punctuation">,</span>by<span class="operator">=</span><span class="string">&#x27;id&#x27;</span><span class="punctuation">)</span></span><br><span class="line">png<span class="punctuation">(</span><span class="string">&#x27;tmp.png&#x27;</span><span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>tmp<span class="punctuation">[</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">2</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">)</span><span class="punctuation">]</span><span class="punctuation">)</span>  <span class="comment">#从图上看更直观</span></span><br><span class="line">dev.off<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="DEseq2筛选差异表达基因"><a href="#DEseq2筛选差异表达基因" class="headerlink" title="DEseq2筛选差异表达基因"></a>DEseq2筛选差异表达基因</h4><p>package ‘DESeq2’ is not available for this version of R的解决方案</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">BiocManager</span>::<span class="title function_ invoke__">install</span>(<span class="string">&quot;DESeq2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">library(DESeq2)</span><br><span class="line">library(edgeR)</span><br><span class="line">library(limma)</span><br><span class="line">library(airway)</span><br><span class="line">data(<span class="string">&quot;airway&quot;</span>)</span><br><span class="line">exprSet=assay(airway)  <span class="meta">#定量后的信息</span></span><br><span class="line">group_list=colData(airway)[,<span class="number">3</span>]  <span class="meta">#提取出来了分组信息，也可以手动写成c()</span></span><br><span class="line">colData=data.frame(row.names = colnames(exprSet),</span><br><span class="line">                   <span class="keyword">group</span>=group_list)</span><br><span class="line">dds=DESeqDataSetFromMatrix(countData = exprSet,</span><br><span class="line">                           colData = colData,</span><br><span class="line">                           design = ~<span class="keyword">group</span>)  <span class="meta">#获取矩阵信息</span></span><br><span class="line">dds=DESeq(dds)</span><br><span class="line">res=results(dds,contrast = c(<span class="string">&#x27;group&#x27;</span>,<span class="string">&#x27;trt&#x27;</span>,<span class="string">&#x27;untrt&#x27;</span>))</span><br><span class="line">summary(res)  <span class="meta">#利用summary命令统计显示一共多少个genes上调和下调</span></span><br><span class="line">resOrdered=res[order(res$padj),]  <span class="meta">#根据padj（p值经过多重校验校正后的值）排序</span></span><br><span class="line">DEG=<span class="keyword">as</span>.data.frame(resOrdered)</span><br><span class="line">DEG=na.omit(DEG)</span><br><span class="line">library(pheatmap)</span><br><span class="line">choose_gene=head(rownames(DEG),<span class="number">100</span>)  </span><br><span class="line">choose_matrix=exprSet[choose_gene,]  <span class="meta">#抽取差异表达显著的前100个基因</span></span><br><span class="line">choose_matrix=t(scale(t(choose_matrix)))  <span class="meta">#用t函数转置，scale函数标准化</span></span><br><span class="line">pheatmap(choose_matrix,filename=<span class="string">&#x27;DEG_top100.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="火山图"><a href="#火山图" class="headerlink" title="火山图"></a>火山图</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">logFC_cutoff=<span class="title function_ invoke__">with</span>(DEG,<span class="title function_ invoke__">mean</span>(<span class="title function_ invoke__">abs</span>(log2FoldChange))+<span class="number">2</span>*<span class="title function_ invoke__">sd</span>(<span class="title function_ invoke__">abs</span>(log2FoldChange)))  <span class="comment">#算log2FoldChange的阈值，with 提取数据框中的某些参数做运算，abs求绝对值，sd求标准差</span></span><br><span class="line">DEG<span class="variable">$change</span>=<span class="keyword">as</span>.<span class="title function_ invoke__">factor</span>(<span class="title function_ invoke__">ifelse</span>(DEG<span class="variable">$pvalue</span>&lt;<span class="number">0.05</span> &amp; <span class="title function_ invoke__">abs</span>(DEG<span class="variable">$log2FoldChange</span>)&gt;logFC_cutoff,<span class="title function_ invoke__">ifelse</span>(DEG<span class="variable">$log2FoldChange</span>&gt;logFC_cutoff,<span class="string">&#x27;UP&#x27;</span>,<span class="string">&#x27;DOWN&#x27;</span>),<span class="string">&#x27;NOT&#x27;</span>))</span><br><span class="line"><span class="comment">#ifelse函数，大于logFC_cutoff的设为up，小于为down</span></span><br><span class="line">this_title=<span class="title function_ invoke__">paste0</span>(<span class="string">&#x27;Cutoff for logFC is &#x27;</span>,<span class="title function_ invoke__">round</span>(logFC_cutoff,<span class="number">3</span>), <span class="string">&#x27;\nThe number of up gene is &#x27;</span>,<span class="title function_ invoke__">nrow</span>(DEG[DEG<span class="variable">$change</span>==<span class="string">&#x27;UP&#x27;</span>,]), <span class="string">&#x27;\nThe number of down gene is &#x27;</span>,<span class="title function_ invoke__">nrow</span>(DEG[DEG<span class="variable">$change</span>==<span class="string">&#x27;DOWN&#x27;</span>,]))  <span class="comment">#paste0函数，默认是sep=&quot;&quot;</span></span><br><span class="line"><span class="title function_ invoke__">library</span>(ggplot2)                     </span><br><span class="line">g=<span class="title function_ invoke__">ggplot</span>(data = DEG,</span><br><span class="line">         <span class="title function_ invoke__">aes</span>(x=log2FoldChange,y=-<span class="title function_ invoke__">log10</span>(pvalue),</span><br><span class="line">             color=change))+</span><br><span class="line">  <span class="title function_ invoke__">geom_point</span>(alpha=<span class="number">0.4</span>,size=<span class="number">1.75</span>)+</span><br><span class="line">  <span class="title function_ invoke__">theme_set</span>(<span class="title function_ invoke__">theme_set</span>(<span class="title function_ invoke__">theme_bw</span>(base_size = <span class="number">20</span>)))+</span><br><span class="line">  <span class="title function_ invoke__">xlab</span>(<span class="string">&#x27;log2 fold change&#x27;</span>)+<span class="title function_ invoke__">ylab</span>(<span class="string">&#x27;-log10 p-value&#x27;</span>)+</span><br><span class="line">  <span class="title function_ invoke__">ggtitle</span>(this_title)+<span class="title function_ invoke__">theme</span>(plot.title = <span class="title function_ invoke__">element_text</span>(size = <span class="number">15</span>,hjust = <span class="number">0.5</span>))+</span><br><span class="line">  <span class="title function_ invoke__">scale_color_manual</span>(values = <span class="title function_ invoke__">c</span>(<span class="string">&#x27;blue&#x27;</span>,<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;red&#x27;</span>))  <span class="comment">#corresponding to the levels(res$change)</span></span><br><span class="line"><span class="title function_ invoke__">ggsave</span>(g,filename = <span class="string">&#x27;volcano.png&#x27;</span>) </span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">png</span>(<span class="string">&#x27;dispersions.png&#x27;</span>,<span class="number">1000</span>,<span class="number">1000</span>,pointsize = <span class="number">20</span>)</span><br><span class="line"><span class="title function_ invoke__">plotDispEsts</span>(dds,main=<span class="string">&#x27;dispersion plot&#x27;</span>)</span><br><span class="line">dev.<span class="title function_ invoke__">off</span>()</span><br></pre></td></tr></table></figure>
+
+<h4 id="作图查看原始定量后的数据和normalization后的数据的差异"><a href="#作图查看原始定量后的数据和normalization后的数据的差异" class="headerlink" title="作图查看原始定量后的数据和normalization后的数据的差异"></a>作图查看原始定量后的数据和normalization后的数据的差异</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rld=rlogTransformation(dds)  <span class="meta">#DEseq2自带的rlog算法对数据进行count矩阵转换</span></span><br><span class="line">exprMatrix_rlog=assay(rld)</span><br><span class="line">png(<span class="string">&#x27;DEseq_RAWvsNORM.png&#x27;</span>,height = <span class="number">800</span>,width = <span class="number">800</span>)</span><br><span class="line">par(cex=<span class="number">0.7</span>)  <span class="meta">#par函数设定全局绘图参数，cex放大多少倍</span></span><br><span class="line">n.sample=ncol(exprSet)</span><br><span class="line"><span class="keyword">if</span>(n.sample&gt;<span class="number">40</span>) par(cex=<span class="number">0.5</span>)  <span class="meta">#</span></span><br><span class="line">cols=rainbow(n.sample*<span class="number">1.2</span>)  <span class="meta">#rainbow 渐变的彩虹色</span></span><br><span class="line">par(mfrow=c(<span class="number">2</span>,<span class="number">2</span>))  <span class="meta">#4个图按行排序</span></span><br><span class="line">boxplot(exprSet, col=cols,main=<span class="string">&#x27;expression value&#x27;</span>,las=<span class="number">2</span>)  <span class="meta">#las为2，标签垂直坐标轴</span></span><br><span class="line">boxplot(exprMatrix_rlog, col=cols, main=<span class="string">&#x27;expression value&#x27;</span>,las=<span class="number">2</span>)</span><br><span class="line">hist(<span class="keyword">as</span>.matrix(exprSet))</span><br><span class="line">hist(exprMatrix_rlog)</span><br><span class="line">dev.off()</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">pigudog</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/08/01/BIA5/">http://example.com/2022/08/01/BIA5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DA/">DA</a></div><div class="post_share"><div class="social-share" data-image="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/08/01/BIA1/"><img class="prev-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">BIA1-利用Python进行生信分析</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/01/Butterfly%E4%B8%BB%E9%A2%98/"><img class="next-cover" src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Hexo-Butterfly</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/08/01/DA0/" title="Intro to DA"><img class="cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-01</div><div class="title">Intro to DA</div></div></a></div><div><a href="/2022/08/07/DA1/" title="DA1-Data Acquisition"><img class="cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-07</div><div class="title">DA1-Data Acquisition</div></div></a></div><div><a href="/2022/08/09/DA2/" title="DA2-Explore analytics and visualization"><img class="cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-09</div><div class="title">DA2-Explore analytics and visualization</div></div></a></div><div><a href="/2022/08/10/DA3/" title="Data Feature Preprocessing"><img class="cover" src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-10</div><div class="title">Data Feature Preprocessing</div></div></a></div><div><a href="/2022/08/20/DA5/" title="Modeling Evaluation"><img class="cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-20</div><div class="title">Modeling Evaluation</div></div></a></div><div><a href="/2022/08/15/DA4/" title="Machine Learning and Modeling"><img class="cover" src="https://www.zcool.com.cn/work/ZNjEyNDM2Mjg=.html" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-15</div><div class="title">Machine Learning and Modeling</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">pigudog</div><div class="author-info__description">冲冲冲！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">82</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/pigudog"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pigudog" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2205638116@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RNA-seq"><span class="toc-number">1.</span> <span class="toc-text">RNA-seq</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#001-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BA%86%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">001 知识点了解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fastq%E6%B5%8B%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">fastq测序文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fastqc%E6%8A%A5%E5%91%8A%E7%9A%84%E9%98%85%E8%AF%BB"><span class="toc-number">1.1.2.</span> <span class="toc-text">fastqc报告的阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basic-Statistics"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Basic Statistics</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Perbase-sequence-quality"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Perbase sequence quality</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#per-tail-sequence-quality"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">per tail sequence quality</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hisat2%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.3.</span> <span class="toc-text">hisat2介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#002%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">002环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%94%9F%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%9A%84%E4%BA%86%E8%A7%A3%EF%BC%88%E8%87%AA%E8%A1%8C%E5%AD%A6%E4%B9%A0%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">一些生信基础知识的了解（自行学习）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%95%B4%E7%90%86%E5%92%8C%E7%86%9F%E8%AE%B0"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">数据格式的整理和熟记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%9B%A0%E5%B1%82%E9%9D%A2%E5%AF%B9%E4%BA%8E%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%9A%84%E8%AE%A4%E8%AF%86"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">基因层面对于生物信息学的认识</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-%E6%B5%81%E7%A8%8B%E6%95%B4%E7%90%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">文献阅读+流程整理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%8C%AE%E6%A3%80%E7%B4%A2-%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.3.</span> <span class="toc-text">文献检索+参考基因组下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.4.</span> <span class="toc-text">软件安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#003-%E5%AE%9E%E6%88%98"><span class="toc-number">1.3.</span> <span class="toc-text">003-实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.3.1.</span> <span class="toc-text">数据下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">1.3.2.</span> <span class="toc-text">数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E6%A3%80"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">质检</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E5%AF%B9"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">比对</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E9%87%8F"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">定量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E7%9F%A9%E9%98%B5%E6%8E%A2%E7%B4%A2"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">表达矩阵探索</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DEseq2%E7%AD%9B%E9%80%89%E5%B7%AE%E5%BC%82%E8%A1%A8%E8%BE%BE%E5%9F%BA%E5%9B%A0"><span class="toc-number">1.3.2.6.</span> <span class="toc-text">DEseq2筛选差异表达基因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%AB%E5%B1%B1%E5%9B%BE"><span class="toc-number">1.3.2.7.</span> <span class="toc-text">火山图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E5%9B%BE%E6%9F%A5%E7%9C%8B%E5%8E%9F%E5%A7%8B%E5%AE%9A%E9%87%8F%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E5%92%8Cnormalization%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">1.3.2.8.</span> <span class="toc-text">作图查看原始定量后的数据和normalization后的数据的差异</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA6/" title="Introduction to WES"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Introduction to WES"/></a><div class="content"><a class="title" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA6/" title="Introduction to WES">Introduction to WES</a><time datetime="2022-11-16T16:00:00.000Z" title="Created 2022-11-17 00:00:00">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA9/" title="Introduction to Single-cell RNA-seq"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Introduction to Single-cell RNA-seq"/></a><div class="content"><a class="title" href="/2022/11/17/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90/BIA9/" title="Introduction to Single-cell RNA-seq">Introduction to Single-cell RNA-seq</a><time datetime="2022-11-16T16:00:00.000Z" title="Created 2022-11-17 00:00:00">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0%E4%BA%91%E8%AE%A1%E7%AE%97Linux/" title="No title"><img src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/11/16/Linux%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0%E4%BA%91%E8%AE%A1%E7%AE%97Linux/" title="No title">No title</a><time datetime="2022-11-16T10:59:40.005Z" title="Created 2022-11-16 18:59:40">2022-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/DA/Untitled/" title="No title"><img src="https://img.zcool.cn/community/01fttellh0aankk1wnvnaq3738.jpg?x-oss-process=image/auto-orient,0/resize,m_lfit,w_3000,limit_1/sharpen,100" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/11/16/DA/Untitled/" title="No title">No title</a><time datetime="2022-11-16T10:59:11.677Z" title="Created 2022-11-16 18:59:11">2022-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AF%BC%E8%AE%BA/BI9/" title="No title"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/11/16/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AF%BC%E8%AE%BA/BI9/" title="No title">No title</a><time datetime="2022-11-16T10:58:44.969Z" title="Created 2022-11-16 18:58:44">2022-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By pigudog</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://pigudog.com">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
